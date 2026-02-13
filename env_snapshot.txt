@@ -1,0 +1,52 @@
+=== DATE ===
+Fri Feb 13 07:54:39 UTC 2026
+=== HOST ===
+=== OS ===
+NAME="openEuler"
+VERSION="22.03 (LTS-SP4)"
+ID="openEuler"
+VERSION_ID="22.03"
+PRETTY_NAME="openEuler 22.03 (LTS-SP4)"
+ANSI_COLOR="0;31"
+
+=== KERNEL ===
+Linux notebook-c3376fac1b4d412bbba6342edab6bc12-6cdcd6fc85-gpndw 5.10.0-60.18.0.50.r865_35.hce2.aarch64 #1 SMP Sun Mar 26 18:01:01 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux
+=== ARCH ===
+aarch64
+=== NPU ===
++------------------------------------------------------------------------------------------------+
+| npu-smi 24.1.0.3                 Version: 24.1.0.3                                             |
++---------------------------+---------------+----------------------------------------------------+
+| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|
+| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |
++===========================+===============+====================================================+
+| 6     910B3               | OK            | 98.3        49                0    / 0             |
+| 0                         | 0000:82:00.0  | 0           0    / 0          3396 / 65536         |
++===========================+===============+====================================================+
++---------------------------+---------------+----------------------------------------------------+
+| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |
++===========================+===============+====================================================+
+| No running processes found in NPU 6                                                            |
++===========================+===============+====================================================+
+=== ASCEND DIR ===
+total 8
+drwxr-xr-x 4 root root 4096 Dec  4  2024 ascend-toolkit
+drwxr-xr-x 4 root root 4096 Feb 13 07:03 driver
+=== ASCEND TOOLKIT LATEST ===
+/usr/local/Ascend/ascend-toolkit/latest
+=== CANN VERSION ===
+=== KEY ENV ===
+ASCEND_AICPU_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ASCEND_CUSTOM_OPP_PATH=/mnt/workspace/ascendC/my_opp/vendors/customize:/mnt/workspace/ascendC/my_opp/vendors/customize:
+ASCEND_HOME_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ASCEND_INSTALL_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ASCEND_OPP_PATH=/usr/local/Ascend/ascend-toolkit/latest/opp
+ASCEND_RUNTIME_OPTIONS=
+ASCEND_TOOLKIT_HOME=/usr/local/Ascend/ascend-toolkit/latest
+ASCEND_VISIBLE_DEVICES=6
+LD_LIBRARY_PATH=/usr/local/Ascend/ascend-toolkit/latest/tools/aoe/lib64:/usr/local/Ascend/ascend-toolkit/8.0.RC3/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/mnt/workspace/ascendC/my_opp/vendors/customize/op_api/lib:/mnt/workspace/ascendC/my_opp/vendors/customize/op_api/lib:/mnt/workspace/ascendC/my_opp/vendors/customize/op_api/lib:/mnt/workspace/ascendC/my_opp/vendors/customize/op_api/lib:/mnt/workspace/ascendC/my_opp/vendors/customize/op_api/lib:/usr/local/Ascend/ascend-toolkit/8.0.RC3/tools/ncs/lib64:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/profiler/lib64:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/profiler/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/opp/lib64:/usr/local/Ascend/ascend-toolkit/latest/hccl/lib64:/usr/local/Ascend/ascend-toolkit/latest/hccl/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/hccl/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/runtime/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/stub:/usr/local/Ascend/ascend-toolkit/latest/hccl/lib64/stub
+PATH=/usr/local/Ascend/ascend-toolkit/latest/tools/aoe/bin:/usr/local/Ascend/ascend-toolkit/8.0.RC3/tools/ncs/bin:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/show_kernel_debug_data/:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/msobjdump/:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/tikcpp/ascendc_compiler:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/ascend_system_advisor/asys:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/ascendc_tools/:/usr/local/Ascend/ascend-toolkit/latest/toolkit/tools/profiler/bin/:/usr/local/Ascend/ascend-toolkit/latest/toolkit/python/site-packages/bin/:/usr/local/Ascend/ascend-toolkit/latest/compiler/tikcpp/ascendc_compiler:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.10/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.10/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHONPATH=/usr/local/Ascend/ascend-toolkit/latest/toolkit/python/site-packages/:/usr/local/Ascend/ascend-toolkit/latest/hccl/python/site-packages/:/usr/local/Ascend/ascend-toolkit/latest/compiler/python/site-packages/:/usr/local/Ascend/ascend-toolkit/8.0.RC3/pyACL/python/site-packages/acl:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe::/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/
+ROOT_PATH=/action-online/c3376fac1b4d412bbba6342edab6bc12
+
