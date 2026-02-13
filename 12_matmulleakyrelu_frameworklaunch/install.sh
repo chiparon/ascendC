@@ -76,6 +76,21 @@ map_compute_unit() {
     esac
 }
 
+patch_generated_build_paths() {
+    local cann_path="$1"
+    local preset_file="CustomOp/CMakePresets.json"
+    local config_file="CustomOp/cmake/config.cmake"
+
+    if [ -f "$preset_file" ]; then
+        sed -i "s#\"ASCEND_CANN_PACKAGE_PATH\"[[:space:]]*:[[:space:]]*\"[^\"]*\"#\"ASCEND_CANN_PACKAGE_PATH\": \"${cann_path}\"#g" "$preset_file"
+        sed -i "s#/usr/local/Ascend/latest#${cann_path}#g" "$preset_file"
+    fi
+    if [ -f "$config_file" ]; then
+        sed -i "s#set(ASCEND_CANN_PACKAGE_PATH .*#set(ASCEND_CANN_PACKAGE_PATH \"${cann_path}\")#g" "$config_file"
+        sed -i "s#/usr/local/Ascend/latest#${cann_path}#g" "$config_file"
+    fi
+}
+
 SOC_VERSION=$(normalize_soc_version "$SOC_VERSION")
 if [ -z "$SOC_VERSION" ]; then
     detect_soc_version
@@ -94,8 +109,10 @@ fi
 source "$_ASCEND_INSTALL_PATH/bin/setenv.bash"
 export ASCEND_HOME_PATH="$_ASCEND_INSTALL_PATH"
 export ASCEND_INSTALL_PATH="$_ASCEND_INSTALL_PATH"
+export ASCEND_CANN_PACKAGE_PATH="$_ASCEND_INSTALL_PATH"
 export ASCEND_COMPUTE_UNIT=$(map_compute_unit "$SOC_VERSION")
 echo "[INFO]: Use ASCEND_INSTALL_PATH=${ASCEND_INSTALL_PATH}"
+echo "[INFO]: Use ASCEND_CANN_PACKAGE_PATH=${ASCEND_CANN_PACKAGE_PATH}"
 echo "[INFO]: Use ASCEND_COMPUTE_UNIT=${ASCEND_COMPUTE_UNIT}"
 
 OP_NAME=MatmulLeakyReluCustom
@@ -108,5 +125,6 @@ if [ $? -ne 0 ]; then
 fi
 # Copy op implementation files to CustomOp
 cp -rf "$OP_NAME"/* CustomOp
+patch_generated_build_paths "$_ASCEND_INSTALL_PATH"
 # Build CustomOp project
 (cd CustomOp && bash build.sh)
