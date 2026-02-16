@@ -1,0 +1,1278 @@
+extern "C" __global__ [aicore] void matmul_leakyrelu_custom(__gm__ uint8_t* __restrict__ arg0, __gm__ uint8_t* __restrict__ arg1, __gm__ uint8_t* __restrict__ arg2, __gm__ uint8_t* __restrict__ arg3, __gm__ uint8_t* __restrict__ arg4, __gm__ uint8_t* __restrict__ arg5) {
+set_ffts_base_addr((uint64_t)0x7c0f17c966a0);
+set_atomic_none();
+set_mask_norm();
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_S, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_S, (pipe_t)PIPE_MTE3, (event_t)0);
+pipe_barrier((pipe_t)PIPE_MTE3);
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)) + 0x1000000000000000), (__ubuf__ void*)0x7c0f159fef90, (uint8_t)0, (uint16_t)1, (uint16_t)4, (uint16_t)0, (uint16_t)0);
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc00000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc10000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc20000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc30000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc40000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc50000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc60000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc70000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc00e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc40e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc80e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc0e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc80000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1000), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xc90000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1200), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xca0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1400), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xcb0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1600), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xcc0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1800), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag_dev((int64_t)0);
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xcd0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1a00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xce0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1c00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_gm_to_ubuf((__ubuf__ void*)0x7c0f159cf010, (__gm__ void*)(((uint64_t)arg4) + 0xcf0000), (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159cf010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc01e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d3010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc41e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159d7010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xc81e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+set_mask_count();
+set_vector_mask((uint64_t)0, (uint64_t)0x1000);
+vlrelu((__ubuf__ float*)0x7c0f159df010, (__ubuf__ float*)0x7c0f159db010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+set_vector_mask((uint64_t)0xffffffffffffffff, (uint64_t)0xffffffffffffffff);
+set_mask_norm();
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+#error "sbitset0 NO PROCESS RETURN VALUE"
+copy_ubuf_to_gm((__gm__ void*)(((uint64_t)arg3) + 0xcc1e00), (__ubuf__ void*)0x7c0f159df010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)240);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+#error "sff0 NO PROCESS RETURN VALUE"
+#error "sbitset1 NO PROCESS RETURN VALUE"
+set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+pipe_barrier((pipe_t)PIPE_ALL);
+}

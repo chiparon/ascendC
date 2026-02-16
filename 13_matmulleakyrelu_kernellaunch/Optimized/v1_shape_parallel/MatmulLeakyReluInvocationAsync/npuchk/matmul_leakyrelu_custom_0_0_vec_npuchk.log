@@ -1,0 +1,1117 @@
+
+### set_ffts_base_addr((uint64_t)124200403277472);
+
+[set_ffts_base_addr] unsupported
+[S] [RECV_INST] set_ffts_base_addr type 7
+[S] [EXECUTE] set_ffts_base_addr type 7
+
+### set_mask_norm();
+
+[set_mask_norm] unsupported
+[S] [RECV_INST] set_mask_norm type 7
+[S] [EXECUTE] set_mask_norm type 7
+
+### set_vector_mask((uint64_t)18446744073709551615, (uint64_t)18446744073709551615);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+[ALL] [TBUF_EVENT] ABS_ADDR 0x70f5a7c68010 0x30000 B type L1
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x70f5a707e010 0x80000 B type L0A
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x5f7dfb258560 0x10000 B type L1
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x5f7dfb268570 0x10000 B type L0B
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x5f7dfb278580 0x20000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x5f7dfa8a9490 0x400 B type L0C
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] ABS_ADDR 0x5f7dfb096250 0x1c00 B type L0C
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[ALL] [TBUF_EVENT] INIT 0x70f5a7c68010 0x10000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][InitMemRecord]add addr: 124200384102416len: 65536
+[ALL] [TBUF_EVENT] INIT 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][InitMemRecord]add addr: 124200384167952len: 16384
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [send event] on set_flag 5 0 0
+[S] [RECV_EVENT] SRC MTE3 DST S EVENT 0
+
+### dcci((__gm__ void*)0x70f5a1e01000, (uint64_t)0, (uint64_t)2);
+
+[dcci] unsupported
+[S] [RECV_INST] dcci type 7
+[S] [EXECUTE] dcci type 7
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+
+[S] [RECV_INST] wait_flag type 4
+[S] [EXECUTE] wait_flag type 4
+[S] [no wait] on wait_flag 5 0 0
+[MTE3] [EVENT_CLEAR] send 5 0 0 has been waited
+
+### set_flag((pipe_t)PIPE_S, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[S] [RECV_INST] set_flag type 3
+[S] [EXECUTE] set_flag type 3
+[S] [send event] on set_flag 0 5 0
+[MTE3] [RECV_EVENT] SRC S DST MTE3 EVENT 0
+
+### wait_flag((pipe_t)PIPE_S, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[MTE3] [RECV_INST] wait_flag type 4
+[MTE3] [EXECUTE] wait_flag type 4
+[MTE3] [no wait] on wait_flag 0 5 0
+[S] [EVENT_CLEAR] send 0 5 0 has been waited
+
+### pipe_barrier((pipe_t)PIPE_MTE3);
+
+[MTE3] [RECV_INST] pipe_barrier type 5
+[MTE3] [EXECUTE] pipe_barrier type 5
+
+### copy_ubuf_to_gm((__gm__ void*)0x70f5a1e01000, (__ubuf__ void*)0x70f5a7c97f90, (uint8_t)0, (uint16_t)1, (uint16_t)4, (uint16_t)0, (uint16_t)0);
+
+[MTE3] [RECV_INST] copy_ubuf_to_gm type 0
+[MTE3] [EXECUTE] copy_ubuf_to_gm type 0
+[MTE3] read  data 0x70f5a7c97f90 0x80 B type UB
+[MTE3] checking synced queue
+[MTE3] [CHECK_DATA] 0x70f5a7c97f90 0x80 B type UB
+[MTE3] [ErrorRead2] on read 0x70f5a7c97f90 0x80 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x57c) [0x70f5a8c8cbc6]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessDmaERNS_7OpInstTE+0x363) [0x70f5a8c8dfa9]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x184) [0x70f5a8c89904]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk15copy_ubuf_to_gmEPvS0_htttt+0x3d6) [0x70f5a8d1f701]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z15copy_ubuf_to_gmPvS_htttt+0x93) [0x70f5a88afc5b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13KfcCommClient11PostMessageILb0EEEvPNS_6KfcMsgE+0x75) [0x70f5a99aa827]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(+0x7c27e) [0x70f5a99b827e]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(+0x782b6) [0x70f5a99b42b6]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0xc4) [0x70f5a99acab0]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a7c97f90 0x80 B type UB
+[MTE3] [CHECK_TBUF] 0x70f5a7c97f90 0x80 B type UB
+[MTE3] allocation buffer match result 2
+[MTE3] persistent buffer match result 2
+[MTE3] [ErrorRead1] on read 0x70f5a7c97f90 0x80 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x96a) [0x70f5a8c8cfb4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessDmaERNS_7OpInstTE+0x363) [0x70f5a8c8dfa9]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x184) [0x70f5a8c89904]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk15copy_ubuf_to_gmEPvS0_htttt+0x3d6) [0x70f5a8d1f701]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z15copy_ubuf_to_gmPvS_htttt+0x93) [0x70f5a88afc5b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13KfcCommClient11PostMessageILb0EEEvPNS_6KfcMsgE+0x75) [0x70f5a99aa827]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(+0x7c27e) [0x70f5a99b827e]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(+0x782b6) [0x70f5a99b42b6]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0xc4) [0x70f5a99acab0]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[MTE3] write data 0x70f5a1e01000 0x80 B type GM
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a1e01000 0x80 B type GM
+[MTE3] checking wrote queue
+[MTE3] [CHECK_DATA] 0x70f5a1e01000 0x80 B type GM
+[MTE3] [CHECK_TBUF] 0x70f5a1e01000 0x80 B type GM
+[MEMCHEK] record is empty with hardware: 1
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [SYNC_DATA] 0x70f5a1e01000 0x80 B type GM
+[MTE3] [send event] on set_flag 5 0 0
+[MTE3] -> [S] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[S] [RECV_EVENT] SRC MTE3 DST S EVENT 0
+[S] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[ALL] [TBUF_EVENT] ALLOC 0x70f5a7c68010 0x10000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][CreateMemRecord] addr: 124200384102416len: 65536
+
+### wait_flag_dev((int64_t)0);
+
+[wait_flag_dev] unsupported
+[S] [RECV_INST] wait_flag_dev type 7
+[S] [EXECUTE] wait_flag_dev type 7
+
+### copy_gm_to_ubuf((__ubuf__ void*)0x70f5a7c68010, (__gm__ void*)0x70f5a3001000, (uint8_t)0, (uint16_t)1, (uint16_t)2048, (uint16_t)0, (uint16_t)0);
+
+[MTE2] [RECV_INST] copy_gm_to_ubuf type 0
+[MTE2] [EXECUTE] copy_gm_to_ubuf type 0
+[MTE2] read  data 0x70f5a3001000 0x10000 B type GM
+[MTE2] [DATA_MARK] 0x70f5a3001000 0x10000 B type GM mark read
+[MTE2] write data 0x70f5a7c68010 0x10000 B type UB
+[MTE2] checking pending queue
+[MTE2] [CHECK_DATA] 0x70f5a7c68010 0x10000 B type UB
+[MTE2] checking wrote queue
+[MTE2] [CHECK_DATA] 0x70f5a7c68010 0x10000 B type UB
+[MTE2] [CHECK_TBUF] 0x70f5a7c68010 0x10000 B type UB
+[MTE2] allocation buffer match result 0
+[MEMCHEK] Mem[124200384102416]checkNum is 0
+
+### set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE2] [RECV_INST] set_flag type 3
+[MTE2] [EXECUTE] set_flag type 3
+[MTE2] [SYNC_DATA] 0x70f5a7c68010 0x10000 B type UB
+[MTE2] [send event] on set_flag 4 1 0
+[MTE2] -> [V] [GET_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[V] [RECV_EVENT] SRC MTE2 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+
+### wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 4 1 0
+[MTE2] [EVENT_CLEAR] send 4 1 0 has been waited
+
+### set_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE2] [RECV_INST] set_flag type 3
+[MTE2] [EXECUTE] set_flag type 3
+[MTE2] [send event] on set_flag 4 1 0
+[MTE2] -> [V] [GET_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[V] [RECV_EVENT] SRC MTE2 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MEMCHEK] Mem[124200384102416]checkNum is 0
+
+### wait_flag((pipe_t)PIPE_MTE2, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 4 1 0
+[MTE2] [EVENT_CLEAR] send 4 1 0 has been waited
+[MEMCHEK] Mem[124200384102416]checkNum is 0
+[ALL] [TBUF_EVENT] ALLOC 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][CreateMemRecord] addr: 124200384167952len: 16384
+
+### set_mask_count();
+
+[set_mask_count] unsupported
+[S] [RECV_INST] set_mask_count type 7
+[S] [EXECUTE] set_mask_count type 7
+
+### set_vector_mask((uint64_t)0, (uint64_t)4096);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### vlrelu((__ubuf__ float*)0x70f5a7c78010, (__ubuf__ float*)0x70f5a7c68010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+
+[V] [RECV_INST] vlrelu type 1
+[V] [EXECUTE] vlrelu type 1
+[MEMCHEK] Mem[124200384102416]checkNum is 0
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+DataMergeAllOnceAll dataLen: 16384
+[V] [ErrorRead4] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x257) [0x70f5a8c8c8a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [ErrorRead2] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x57c) [0x70f5a8c8cbc6]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] checking pending queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [CHECK_TBUF] 0 0x4000 B type UB
+[V] allocation buffer match result 2
+[V] persistent buffer match result 2
+[V] [ErrorRead1] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x96a) [0x70f5a8c8cfb4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0x70f5a7c68010 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0x70f5a7c68010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c68010 0x10000 stat 1
+[V] [DATA_MARK] 0x70f5a7c68010 0x4000 B type UB mark read
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c68010 0x4000 B type UB
+[V] [CHECK_TBUF] 0x70f5a7c68010 0x4000 B type UB
+[V] allocation buffer match result 0
+[V] write data 0x70f5a7c78010 0x4000 B type UB
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] checking wrote queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[V] allocation buffer match result 0
+
+### set_vector_mask((uint64_t)18446744073709551615, (uint64_t)18446744073709551615);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### set_mask_norm();
+
+[set_mask_norm] unsupported
+[S] [RECV_INST] set_mask_norm type 7
+[S] [EXECUTE] set_mask_norm type 7
+
+### set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[V] [RECV_INST] set_flag type 3
+[V] [EXECUTE] set_flag type 3
+[V] [SYNC_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] [send event] on set_flag 1 5 0
+[V] -> [MTE3] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE3] [RECV_EVENT] SRC V DST MTE3 EVENT 0
+[MTE3] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[MTE3] [RECV_INST] wait_flag type 4
+[MTE3] [EXECUTE] wait_flag type 4
+[MTE3] [no wait] on wait_flag 1 5 0
+[V] [EVENT_CLEAR] send 1 5 0 has been waited
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### copy_ubuf_to_gm((__gm__ void*)0x70f5a8a2a000, (__ubuf__ void*)0x70f5a7c78010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)0);
+
+[MTE3] [RECV_INST] copy_ubuf_to_gm type 0
+[MTE3] [EXECUTE] copy_ubuf_to_gm type 0
+[MTE3] read  data 0x70f5a7c78010 0x4000 B type UB
+[MTE3] checking synced queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[MTE3] [DATA_MARK] 0x70f5a7c78010 0x4000 B type UB mark read
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] allocation buffer match result 0
+[MTE3] write data 0x70f5a8a2a000 0x4000 B type GM
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a8a2a000 0x4000 B type GM
+[MTE3] checking wrote queue
+[MTE3] [CHECK_DATA] 0x70f5a8a2a000 0x4000 B type GM
+[MTE3] [CHECK_TBUF] 0x70f5a8a2a000 0x4000 B type GM
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [SYNC_DATA] 0x70f5a8a2a000 0x4000 B type GM
+[MTE3] [send event] on set_flag 5 1 0
+[MTE3] -> [V] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE3] -> [V] [GET_DATA] 0x70f5a8a2a000 0x4000 B stat 1 type GM
+[V] [RECV_EVENT] SRC MTE3 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a8a2a000 0x4000 B stat 1 type GM
+[ALL] [TBUF_EVENT] FREE 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+[MEMCHEK] Mem[124200384167952] is FREE
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 5 1 0
+[MTE3] [EVENT_CLEAR] send 5 1 0 has been waited
+[ALL] [TBUF_EVENT] ALLOC 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][CreateMemRecord] addr: 124200384167952len: 16384
+
+### set_mask_count();
+
+[set_mask_count] unsupported
+[S] [RECV_INST] set_mask_count type 7
+[S] [EXECUTE] set_mask_count type 7
+
+### set_vector_mask((uint64_t)0, (uint64_t)4096);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### vlrelu((__ubuf__ float*)0x70f5a7c78010, (__ubuf__ float*)0x70f5a7c6c010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+
+[V] [RECV_INST] vlrelu type 1
+[V] [EXECUTE] vlrelu type 1
+[MEMCHEK] Mem[124200384118800]checkNum is 0
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+DataMergeAllOnceAll dataLen: 16384
+[V] [ErrorRead4] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x257) [0x70f5a8c8c8a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [ErrorRead2] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x57c) [0x70f5a8c8cbc6]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] checking pending queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [CHECK_TBUF] 0 0x4000 B type UB
+[V] allocation buffer match result 2
+[V] persistent buffer match result 2
+[V] [ErrorRead1] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x96a) [0x70f5a8c8cfb4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0x70f5a7c6c010 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0x70f5a7c6c010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c68010 0x14000 stat 1
+[V] [DATA_MARK] 0x70f5a7c6c010 0x4000 B type UB mark read
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c6c010 0x4000 B type UB
+[V] [CHECK_TBUF] 0x70f5a7c6c010 0x4000 B type UB
+[V] allocation buffer match result 0
+[V] write data 0x70f5a7c78010 0x4000 B type UB
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] checking wrote queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[V] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[V] allocation buffer match result 0
+
+### set_vector_mask((uint64_t)18446744073709551615, (uint64_t)18446744073709551615);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### set_mask_norm();
+
+[set_mask_norm] unsupported
+[S] [RECV_INST] set_mask_norm type 7
+[S] [EXECUTE] set_mask_norm type 7
+
+### set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[V] [RECV_INST] set_flag type 3
+[V] [EXECUTE] set_flag type 3
+[V] [SYNC_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] [send event] on set_flag 1 5 0
+[V] -> [MTE3] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE3] [RECV_EVENT] SRC V DST MTE3 EVENT 0
+[MTE3] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[MTE3] [RECV_INST] wait_flag type 4
+[MTE3] [EXECUTE] wait_flag type 4
+[MTE3] [no wait] on wait_flag 1 5 0
+[V] [EVENT_CLEAR] send 1 5 0 has been waited
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### copy_ubuf_to_gm((__gm__ void*)0x70f5a8a2e000, (__ubuf__ void*)0x70f5a7c78010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)0);
+
+[MTE3] [RECV_INST] copy_ubuf_to_gm type 0
+[MTE3] [EXECUTE] copy_ubuf_to_gm type 0
+[MTE3] read  data 0x70f5a7c78010 0x4000 B type UB
+[MTE3] checking synced queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[MTE3] [DATA_MARK] 0x70f5a7c78010 0x4000 B type UB mark read
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] allocation buffer match result 0
+[MTE3] write data 0x70f5a8a2e000 0x4000 B type GM
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a8a2e000 0x4000 B type GM
+[MTE3] checking wrote queue
+[MTE3] [CHECK_DATA] 0x70f5a8a2e000 0x4000 B type GM
+[MTE3] [CHECK_TBUF] 0x70f5a8a2e000 0x4000 B type GM
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [SYNC_DATA] 0x70f5a8a2e000 0x4000 B type GM
+[MTE3] [send event] on set_flag 5 1 0
+[MTE3] -> [V] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE3] -> [V] [GET_DATA] 0x70f5a8a2a000 0x8000 B stat 1 type GM
+[V] [RECV_EVENT] SRC MTE3 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a8a2a000 0x8000 B stat 1 type GM
+[ALL] [TBUF_EVENT] FREE 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+[MEMCHEK] Mem[124200384167952] is FREE
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 5 1 0
+[MTE3] [EVENT_CLEAR] send 5 1 0 has been waited
+[ALL] [TBUF_EVENT] ALLOC 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][CreateMemRecord] addr: 124200384167952len: 16384
+
+### set_mask_count();
+
+[set_mask_count] unsupported
+[S] [RECV_INST] set_mask_count type 7
+[S] [EXECUTE] set_mask_count type 7
+
+### set_vector_mask((uint64_t)0, (uint64_t)4096);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### vlrelu((__ubuf__ float*)0x70f5a7c78010, (__ubuf__ float*)0x70f5a7c70010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+
+[V] [RECV_INST] vlrelu type 1
+[V] [EXECUTE] vlrelu type 1
+[MEMCHEK] Mem[124200384135184]checkNum is 0
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+DataMergeAllOnceAll dataLen: 16384
+[V] [ErrorRead4] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x257) [0x70f5a8c8c8a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [ErrorRead2] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x57c) [0x70f5a8c8cbc6]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] checking pending queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [CHECK_TBUF] 0 0x4000 B type UB
+[V] allocation buffer match result 2
+[V] persistent buffer match result 2
+[V] [ErrorRead1] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x96a) [0x70f5a8c8cfb4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0x70f5a7c70010 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0x70f5a7c70010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c68010 0x14000 stat 1
+[V] [DATA_MARK] 0x70f5a7c70010 0x4000 B type UB mark read
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c70010 0x4000 B type UB
+[V] [CHECK_TBUF] 0x70f5a7c70010 0x4000 B type UB
+[V] allocation buffer match result 0
+[V] write data 0x70f5a7c78010 0x4000 B type UB
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] checking wrote queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[V] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[V] allocation buffer match result 0
+
+### set_vector_mask((uint64_t)18446744073709551615, (uint64_t)18446744073709551615);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### set_mask_norm();
+
+[set_mask_norm] unsupported
+[S] [RECV_INST] set_mask_norm type 7
+[S] [EXECUTE] set_mask_norm type 7
+
+### set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[V] [RECV_INST] set_flag type 3
+[V] [EXECUTE] set_flag type 3
+[V] [SYNC_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] [send event] on set_flag 1 5 0
+[V] -> [MTE3] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE3] [RECV_EVENT] SRC V DST MTE3 EVENT 0
+[MTE3] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[MTE3] [RECV_INST] wait_flag type 4
+[MTE3] [EXECUTE] wait_flag type 4
+[MTE3] [no wait] on wait_flag 1 5 0
+[V] [EVENT_CLEAR] send 1 5 0 has been waited
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### copy_ubuf_to_gm((__gm__ void*)0x70f5a8a32000, (__ubuf__ void*)0x70f5a7c78010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)0);
+
+[MTE3] [RECV_INST] copy_ubuf_to_gm type 0
+[MTE3] [EXECUTE] copy_ubuf_to_gm type 0
+[MTE3] read  data 0x70f5a7c78010 0x4000 B type UB
+[MTE3] checking synced queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[MTE3] [DATA_MARK] 0x70f5a7c78010 0x4000 B type UB mark read
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] allocation buffer match result 0
+[MTE3] write data 0x70f5a8a32000 0x4000 B type GM
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a8a32000 0x4000 B type GM
+[MTE3] checking wrote queue
+[MTE3] [CHECK_DATA] 0x70f5a8a32000 0x4000 B type GM
+[MTE3] [CHECK_TBUF] 0x70f5a8a32000 0x4000 B type GM
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [SYNC_DATA] 0x70f5a8a32000 0x4000 B type GM
+[MTE3] [send event] on set_flag 5 1 0
+[MTE3] -> [V] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE3] -> [V] [GET_DATA] 0x70f5a8a2a000 0xc000 B stat 1 type GM
+[V] [RECV_EVENT] SRC MTE3 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a8a2a000 0xc000 B stat 1 type GM
+[ALL] [TBUF_EVENT] FREE 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+[MEMCHEK] Mem[124200384167952] is FREE
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 5 1 0
+[MTE3] [EVENT_CLEAR] send 5 1 0 has been waited
+[ALL] [TBUF_EVENT] ALLOC 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK][CreateMemRecord] addr: 124200384167952len: 16384
+
+### set_mask_count();
+
+[set_mask_count] unsupported
+[S] [RECV_INST] set_mask_count type 7
+[S] [EXECUTE] set_mask_count type 7
+
+### set_vector_mask((uint64_t)0, (uint64_t)4096);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### vlrelu((__ubuf__ float*)0x70f5a7c78010, (__ubuf__ float*)0x70f5a7c74010, (float)0.001, (uint8_t)1, (uint16_t)1, (uint16_t)1, (uint16_t)8, (uint16_t)8);
+
+[V] [RECV_INST] vlrelu type 1
+[V] [EXECUTE] vlrelu type 1
+[MEMCHEK] Mem[124200384151568]checkNum is 0
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+DataMergeAllOnceAll dataLen: 16384
+[V] [ErrorRead4] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x257) [0x70f5a8c8c8a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [ErrorRead2] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x57c) [0x70f5a8c8cbc6]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] checking pending queue
+[V] [CHECK_DATA] 0 0x4000 B type UB
+[V] [CHECK_TBUF] 0 0x4000 B type UB
+[V] allocation buffer match result 2
+[V] persistent buffer match result 2
+[V] [ErrorRead1] on read 0 0x4000 B
+##### BackTrace #####
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk12GetBackTraceERSt19basic_ostringstreamIcSt11char_traitsIcESaIcEE+0xce) [0x70f5a8cb370f]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk23NpuCheckErrorMsgProcessESsRSt19basic_ostringstreamIcSt11char_traitsIcESaIcEEbb+0xa5) [0x70f5a8cb3caa]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine8DataReadERSt6vectorINS_5DataTESaIS2_EEb+0x96a) [0x70f5a8c8cfb4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine10ProcessVecERNS_7OpInstTE+0x554) [0x70f5a8c8f434]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6Engine7ExecuteEv+0x1b7) [0x70f5a8c89937]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk8Executor11ExecuteCodeERNS_7OpInstTE+0x172) [0x70f5a8c9a9f4]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_npuchk.so(_ZN6npuchk6vlreluEPfS0_fhtttt+0x4ab) [0x70f5a8d919a1]
+  /home/viparon/Ascend/cann-8.5.0/tools/tikicpulib/lib/libtikicpulib_stubreg.so(_Z6vlreluPfS_fhtttt+0xa5) [0x70f5a8965269]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC23LeakyReluIntrinsicsImplIfEEvPT_S2_S1_hRKNS_17UnaryRepeatParamsE+0x75) [0x70f5a99c3785]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC13LeakyReluImplIfLb1EEEvPT_S2_RKS1_RKi+0xac) [0x70f5a99bef80]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN7AscendC9LeakyReluIfLb1EEEvRKNS_11LocalTensorIT_EES5_RKS2_RKi+0x13a) [0x70f5a99b8ce2]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE16LeakyReluComputeEj+0xe9) [0x70f5a99b453b]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(_ZN17MatmulLeakyKernelI4halfS0_ffE7ProcessEv+0x16a) [0x70f5a99acb56]
+  /home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so(matmul_leakyrelu_custom+0x27f) [0x70f5a998ce3c]
+  ./ascendc_kernels_bbit(+0x87d8) [0x5f7dcb85b7d8]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x70f5a7629d90]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x70f5a7629e40]
+  ./ascendc_kernels_bbit(+0xba45) [0x5f7dcb85ea45]
+
+[V] read  data 0x70f5a7c74010 0x4000 B type UB
+[V] checking synced queue
+[V] [CHECK_DATA] 0x70f5a7c74010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c68010 0x14000 stat 1
+[V] [DATA_MARK] 0x70f5a7c74010 0x4000 B type UB mark read
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c74010 0x4000 B type UB
+[V] [CHECK_TBUF] 0x70f5a7c74010 0x4000 B type UB
+[V] allocation buffer match result 0
+[V] write data 0x70f5a7c78010 0x4000 B type UB
+[V] checking pending queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] checking wrote queue
+[V] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[V] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[V] allocation buffer match result 0
+
+### set_vector_mask((uint64_t)18446744073709551615, (uint64_t)18446744073709551615);
+
+[V] [RECV_INST] set_vector_mask type 6
+[V] [EXECUTE] set_vector_mask type 6
+
+### set_mask_norm();
+
+[set_mask_norm] unsupported
+[S] [RECV_INST] set_mask_norm type 7
+[S] [EXECUTE] set_mask_norm type 7
+
+### set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[V] [RECV_INST] set_flag type 3
+[V] [EXECUTE] set_flag type 3
+[V] [SYNC_DATA] 0x70f5a7c78010 0x4000 B type UB
+[V] [send event] on set_flag 1 5 0
+[V] -> [MTE3] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE3] [RECV_EVENT] SRC V DST MTE3 EVENT 0
+[MTE3] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE3, (event_t)0);
+
+[MTE3] [RECV_INST] wait_flag type 4
+[MTE3] [EXECUTE] wait_flag type 4
+[MTE3] [no wait] on wait_flag 1 5 0
+[V] [EVENT_CLEAR] send 1 5 0 has been waited
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### copy_ubuf_to_gm((__gm__ void*)0x70f5a8a36000, (__ubuf__ void*)0x70f5a7c78010, (uint8_t)0, (uint16_t)32, (uint16_t)16, (uint16_t)0, (uint16_t)0);
+
+[MTE3] [RECV_INST] copy_ubuf_to_gm type 0
+[MTE3] [EXECUTE] copy_ubuf_to_gm type 0
+[MTE3] read  data 0x70f5a7c78010 0x4000 B type UB
+[MTE3] checking synced queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] data matched whole 0x70f5a7c78010 0x4000 stat 1
+[MTE3] [DATA_MARK] 0x70f5a7c78010 0x4000 B type UB mark read
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] [CHECK_TBUF] 0x70f5a7c78010 0x4000 B type UB
+[MTE3] allocation buffer match result 0
+[MTE3] write data 0x70f5a8a36000 0x4000 B type GM
+[MTE3] checking pending queue
+[MTE3] [CHECK_DATA] 0x70f5a8a36000 0x4000 B type GM
+[MTE3] checking wrote queue
+[MTE3] [CHECK_DATA] 0x70f5a8a36000 0x4000 B type GM
+[MTE3] [CHECK_TBUF] 0x70f5a8a36000 0x4000 B type GM
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+
+### set_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[MTE3] [RECV_INST] set_flag type 3
+[MTE3] [EXECUTE] set_flag type 3
+[MTE3] [SYNC_DATA] 0x70f5a8a36000 0x4000 B type GM
+[MTE3] [send event] on set_flag 5 1 0
+[MTE3] -> [V] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE3] -> [V] [GET_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[V] [RECV_EVENT] SRC MTE3 DST V EVENT 0
+[V] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[ALL] [TBUF_EVENT] FREE 0x70f5a7c78010 0x4000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+    UB USED: 0x10000, Rate: 25%
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK] Mem[124200384167952]checkNum is 0
+[MEMCHEK] Mem[124200384167952] is FREE
+
+### set_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+
+[V] [RECV_INST] set_flag type 3
+[V] [EXECUTE] set_flag type 3
+[V] [send event] on set_flag 1 4 0
+[V] -> [MTE2] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE2] [RECV_EVENT] SRC V DST MTE2 EVENT 0
+[MTE2] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[ALL] [TBUF_EVENT] FREE 0x70f5a7c68010 0x10000 B type UB
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MEMCHEK] Mem[124200384102416]checkNum is 0
+[MEMCHEK] Mem[124200384102416] is FREE
+
+### dcci((__gm__ void*)0x70f5a1e01080, (uint64_t)0, (uint64_t)2);
+
+[dcci] unsupported
+[S] [RECV_INST] dcci type 7
+[S] [EXECUTE] dcci type 7
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_S, (event_t)0);
+
+[S] [RECV_INST] wait_flag type 4
+[S] [EXECUTE] wait_flag type 4
+[S] [no wait] on wait_flag 5 0 0
+[MTE3] [EVENT_CLEAR] send 5 0 0 has been waited
+
+### dcci((__gm__ void*)0x70f5a1e01080, (uint64_t)0, (uint64_t)2);
+
+[dcci] unsupported
+[S] [RECV_INST] dcci type 7
+[S] [EXECUTE] dcci type 7
+
+### wait_flag((pipe_t)PIPE_V, (pipe_t)PIPE_MTE2, (event_t)0);
+
+[MTE2] [RECV_INST] wait_flag type 4
+[MTE2] [EXECUTE] wait_flag type 4
+[MTE2] [no wait] on wait_flag 1 4 0
+[V] [EVENT_CLEAR] send 1 4 0 has been waited
+
+### wait_flag((pipe_t)PIPE_MTE3, (pipe_t)PIPE_V, (event_t)0);
+
+[V] [RECV_INST] wait_flag type 4
+[V] [EXECUTE] wait_flag type 4
+[V] [no wait] on wait_flag 5 1 0
+[MTE3] [EVENT_CLEAR] send 5 1 0 has been waited
+
+### pipe_barrier((pipe_t)PIPE_ALL);
+
+[V] -> [ALL] [GET_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[S] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[M] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE1] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE2] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE3] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE4] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE5] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[V2] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[FIX] [RECV_DATA] 0x70f5a7c78010 0x4000 B stat 1 type UB
+[MTE2] -> [ALL] [GET_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[S] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[V] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[M] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MTE1] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MTE3] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MTE4] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MTE5] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[V2] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[FIX] [RECV_DATA] 0x70f5a7c68010 0x10000 B stat 1 type UB
+[MTE3] -> [ALL] [GET_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE3] -> [ALL] [GET_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[S] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[S] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[M] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[M] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[MTE1] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE1] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[MTE2] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE2] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[MTE4] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE4] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[MTE5] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[MTE5] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[V2] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[V2] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[FIX] [RECV_DATA] 0x70f5a1e01000 0x80 B stat 1 type GM
+[FIX] [RECV_DATA] 0x70f5a8a2a000 0x10000 B stat 1 type GM
+[S] [STAT] Recv 17 PC 17
+[V] [STAT] Recv 24 PC 24
+[M] [STAT] Recv 0 PC 0
+[MTE1] [STAT] Recv 0 PC 0
+[MTE2] [STAT] Recv 4 PC 4
+[MTE3] [STAT] Recv 17 PC 17
+[ALL] [STAT] Recv 0 PC 0
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf used stat ----------
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+    UB USED: 0x14000, Rate: 31.25%
+[ALL] [TBUF_STAT] ---------- tbuf init stat ----------
+[MTE4] [STAT] Recv 0 PC 0
+[MTE5] [STAT] Recv 0 PC 0
+[V2] [STAT] Recv 0 PC 0
+[FIX] [STAT] Recv 0 PC 0
+[Executor] [STAT] codes 63

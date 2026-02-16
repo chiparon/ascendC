@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/CMakeFiles/ascendc_kernels_sim_aiv_device"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/CMakeFiles/ascendc_kernels_sim_aiv_device.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/CMakeFiles/ascendc_kernels_sim_aiv_device-complete.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-build.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-configure.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-download.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-install.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-mkdir.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-patch.rule"
+		},
+		{
+			"file" : "/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/ascendc_kernels_sim_aiv_device-prefix/src/ascendc_kernels_sim_aiv_device-stamp/ascendc_kernels_sim_aiv_device-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ascendc_kernels_sim_aiv_device"
+		],
+		"name" : "ascendc_kernels_sim_aiv_device"
+	}
+}

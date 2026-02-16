@@ -1,0 +1,156 @@
+/**
+ * @file matmul_leakyrelu_custom_tiling.cpp
+ *
+ * Copyright (C) 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+#include <algorithm>
+#include <cassert>
+#include <cstdint>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+
+#include "kernel_tiling/kernel_tiling.h"
+#include "tiling/tiling_api.h"
+#include "tiling/platform/platform_ascendc.h"
+
+using namespace matmul_tiling;
+using namespace std;
+
+namespace {
+
+inline uint32_t CeilDiv(uint32_t a, uint32_t b)
+{
+    return (a + b - 1U) / b;
+}
+
+struct SplitConfig {
+    int32_t baseM;
+    int32_t baseN;
+};
+
+bool TryGenerateOnce(const platform_ascendc::PlatformAscendC *platform, uint8_t *tilingBuf, uint32_t M, uint32_t N, uint32_t K,
+                     uint32_t usedCoreNum, int32_t baseM, int32_t baseN)
+{
+    TPosition leftPosition = TPosition::GM;
+    CubeFormat leftFormat = CubeFormat::ND;
+    DataType leftDtype = DataType::DT_FLOAT16;
+    bool isTransA = false;
+
+    TPosition rightPosition = TPosition::GM;
+    CubeFormat rightFormat = CubeFormat::ND;
+    DataType rightDtype = DataType::DT_FLOAT16;
+    bool isTransB = false;
+
+    TPosition resultPosition = TPosition::GM;
+    CubeFormat resultFormat = CubeFormat::ND;
+    DataType resultDtype = DataType::DT_FLOAT;
+
+    TPosition biasPosition = TPosition::GM;
+    CubeFormat biasFormat = CubeFormat::ND;
+    DataType biasDtype = DataType::DT_FLOAT;
+    bool isBias = true;
+
+    optiling::TCubeTiling tilingData;
+    MultiCoreMatmulTiling tilingApi(*platform);
+    tilingApi.SetDim(usedCoreNum);
+    tilingApi.SetAType(leftPosition, leftFormat, leftDtype, isTransA);
+    tilingApi.SetBType(rightPosition, rightFormat, rightDtype, isTransB);
+    tilingApi.SetCType(resultPosition, resultFormat, resultDtype);
+    tilingApi.SetBiasType(biasPosition, biasFormat, biasDtype);
+    tilingApi.SetOrgShape(M, N, K);
+    tilingApi.SetShape(M, N, K);
+    tilingApi.SetBias(isBias);
+    tilingApi.SetTraverse(MatrixTraverse::FIRSTM);
+    tilingApi.SetFixSplit(baseM, baseN, -1);
+    tilingApi.SetBufferSpace(-1, -1, -1);
+
+    const int64_t res = tilingApi.GetTiling(tilingData);
+    if (res == -1) {
+        return false;
+    }
+    tilingData.set_stepM(1);
+    tilingData.set_stepN(1);
+    tilingData.SaveToBuffer(tilingBuf, tilingData.GetDataSize());
+
+    // Kernel pipeline assumes per-core region is composed of full baseM x baseN tiles.
+    const auto *tiling = reinterpret_cast<const TCubeTiling *>(tilingBuf);
+    const bool invalidTileShape = (tiling->singleCoreM < tiling->baseM) || (tiling->singleCoreN < tiling->baseN) ||
+                                  (tiling->singleCoreM % tiling->baseM != 0U) || (tiling->singleCoreN % tiling->baseN != 0U);
+    if (invalidTileShape) {
+        return false;
+    }
+    return true;
+}
+
+} // namespace
+
+/**
+  * @brief  Generate matmul tiling.
+  * @param  socVersion: Platform socversion.
+  * @param  tilingBuf data buffer.
+  */
+bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint32_t N, uint32_t K, uint32_t preferredCoreNum)
+{
+    const uint32_t tilingKey = (M == 512U && N == 128U && K == 512U) ? 1U : 0U;
+    const int32_t baseM = (M >= 4096U) ? 128 : 256;
+    const int32_t baseN = (N >= 2048U) ? 256 : 128;
+
+    auto ascendcPlatform = platform_ascendc::PlatformAscendCManager::GetInstance(socVersion);
+    const uint32_t maxCoreNum = std::max<uint32_t>(1U, ascendcPlatform->GetCoreNumAiv());
+    const uint32_t preferredCap = std::min<uint32_t>(maxCoreNum, preferredCoreNum == 0U ? maxCoreNum : preferredCoreNum);
+
+    // Keep a deterministic split search order. For small-N cases (e.g. N=128), try tighter M split first.
+    std::vector<SplitConfig> splitCandidates = {
+        {baseM, baseN},
+        {128, 128},
+        {256, 128},
+        {64, 128},
+        {128, 64},
+    };
+    if (tilingKey == 1U) {
+        splitCandidates = {
+            {128, 128},
+            {256, 128},
+            {64, 128},
+            {128, 64},
+            {baseM, baseN},
+        };
+    }
+
+    // Prefer multi-core plans. Single-core is kept as a last-resort fallback.
+    for (const auto &split : splitCandidates) {
+        const uint64_t tileCount = static_cast<uint64_t>(CeilDiv(M, static_cast<uint32_t>(split.baseM))) *
+                                   static_cast<uint64_t>(CeilDiv(N, static_cast<uint32_t>(split.baseN)));
+        if (tileCount == 0U) {
+            continue;
+        }
+        uint32_t startCoreNum = std::min<uint32_t>(preferredCap, static_cast<uint32_t>(tileCount));
+        if (startCoreNum >= 2U) {
+            for (uint32_t core = startCoreNum; core >= 2U; --core) {
+                if (TryGenerateOnce(ascendcPlatform, tilingBuf, M, N, K, core, split.baseM, split.baseN)) {
+                    std::cout << "select tiling key=" << tilingKey << " core=" << core << " baseM=" << split.baseM
+                              << " baseN=" << split.baseN << std::endl;
+                    return true;
+                }
+            }
+        }
+    }
+
+    for (const auto &split : splitCandidates) {
+        if (TryGenerateOnce(ascendcPlatform, tilingBuf, M, N, K, 1U, split.baseM, split.baseN)) {
+            std::cout << "select tiling key=" << tilingKey << " core=1 baseM=" << split.baseM
+                      << " baseN=" << split.baseN << std::endl;
+            return true;
+        }
+    }
+
+    std::cout << "gen tiling failed for shape M=" << M << ", N=" << N << ", K=" << K << std::endl;
+    return false;
+}
