@@ -42,8 +42,8 @@ public:
     __aicore__ inline void Process();
 
     __aicore__ inline void MatmulCompute();
-    __aicore__ inline void LeakyReluCompute(AscendC::LocalTensor<cType> reluLocal, uint32_t rowChunk);
-    __aicore__ inline void CopyOut(AscendC::LocalTensor<cType> reluLocal, uint32_t tileIdx, uint32_t rowChunk);
+    __aicore__ inline void LeakyReluCompute(uint32_t chunkIdx);
+    __aicore__ inline void CopyOut(uint32_t count);
     __aicore__ inline void CalcOffset(int32_t blockIdx, const TCubeTiling &tiling, int32_t &offsetA, int32_t &offsetB,
                                       int32_t &offsetC, int32_t &offsetBias);
 
@@ -56,11 +56,11 @@ public:
     AscendC::GlobalTensor<cType> cGlobal;
     AscendC::GlobalTensor<biasType> biasGlobal;
     AscendC::GlobalTensor<cType> workspaceGlobal;
+    AscendC::LocalTensor<cType> reluInLocal;
     TCubeTiling tiling;
-    AscendC::TQue<AscendC::TPosition::VECIN, 2> reluInQueue;
+    AscendC::TQue<AscendC::TPosition::VECIN, 1> reluInQueue;
     uint32_t splitRowNums = 0;
     uint32_t splitRowSize = 0;
-    uint32_t tileCount = 0;
 };
 
 /**
@@ -80,12 +80,8 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Init(GM
                                                                               const TCubeTiling &tiling, AscendC::TPipe *pipe)
 {
     this->tiling = tiling;
-    splitRowNums = (tiling.baseM >= 256U) ? 8U : 4U;
-    while (splitRowNums > 1U && (tiling.baseM % splitRowNums) != 0U) {
-        splitRowNums /= 2U;
-    }
+    splitRowNums = 4;
     splitRowSize = tiling.baseM / splitRowNums;
-    tileCount = tiling.singleCoreM * tiling.singleCoreN / (tiling.baseM * tiling.baseN);
     aGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ aType *>(a), tiling.M * tiling.Ka);
     bGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ bType *>(b), tiling.Kb * tiling.N);
     cGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ cType *>(c), tiling.M * tiling.N);
@@ -99,7 +95,7 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Init(GM
     cGlobal = cGlobal[offsetC];
     biasGlobal = biasGlobal[offsetBias];
     workspaceGlobal = workspaceGlobal[GetBlockIdx() * tiling.singleCoreM * tiling.singleCoreN];
-    pipe->InitBuffer(reluInQueue, 2, tiling.baseM * tiling.baseN * sizeof(cType)); // Init relu input queue.
+    pipe->InitBuffer(reluInQueue, 1, tiling.baseM * tiling.baseN * sizeof(cType)); // Init relu input queue.
 }
 
 /**
@@ -114,24 +110,14 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Process
     matmulObj.SetTensorB(bGlobal);
     matmulObj.SetBias(biasGlobal);
     matmulObj.template Iterate<false>(); // Sync is set false means async, this scene will run while(Iterate).
-    uint32_t prefetched = 0U;
-    const uint32_t warmup = (tileCount >= 1U) ? 1U : 0U;
-    for (; prefetched < warmup; ++prefetched) {
-        MatmulCompute();
-    }
-
-    for (uint32_t tileIdx = 0U; tileIdx < tileCount; ++tileIdx) {
-        auto reluLocal = reluInQueue.DeQue<cType>(); // wait matmul compute result finish.
-        if (prefetched < tileCount) {
-            MatmulCompute();
-            ++prefetched;
+    for (int i = 0; i < tiling.singleCoreM * tiling.singleCoreN / (tiling.baseM * tiling.baseN); ++i) {
+        MatmulCompute(); // Get matmul compute result.
+        reluInLocal = reluInQueue.DeQue<cType>(); // wait matmul compute result finish.
+        for (int j = 0; j < splitRowNums; ++j) {
+            LeakyReluCompute(j); // Compute leakyRelu.
+            CopyOut(i * splitRowNums + j); // Copy leakyRelu out result to GM.
         }
-
-        for (uint32_t rowChunk = 0U; rowChunk < splitRowNums; ++rowChunk) {
-            LeakyReluCompute(reluLocal, rowChunk); // Compute leakyRelu in-place.
-            CopyOut(reluLocal, tileIdx, rowChunk); // Copy leakyRelu out result to GM.
-        }
-        reluInQueue.FreeTensor(reluLocal);
+        reluInQueue.FreeTensor(reluInLocal);
     }
     matmulObj.End();
 }
@@ -139,17 +125,16 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Process
 template <typename aType, typename bType, typename cType, typename biasType>
 __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::MatmulCompute()
 {
-    auto reluLocal = reluInQueue.AllocTensor<cType>();
-    matmulObj.template GetTensorC<false>(reluLocal, false, true);
-    reluInQueue.EnQue(reluLocal);
+    reluInLocal = reluInQueue.AllocTensor<cType>();
+    matmulObj.template GetTensorC<false>(reluInLocal, false, true);
+    reluInQueue.EnQue(reluInLocal);
 }
 
 template <typename aType, typename bType, typename cType, typename biasType>
-__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute(AscendC::LocalTensor<cType> reluLocal,
-                                                                                            uint32_t rowChunk)
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute(uint32_t chunkIdx)
 {
-    auto chunk = reluLocal[rowChunk * splitRowSize * tiling.baseN];
-    LeakyRelu(chunk, chunk, static_cast<cType>(0.001), splitRowSize * tiling.baseN);
+    auto chunk = reluInLocal[chunkIdx * splitRowSize * tiling.baseN];
+    LeakyRelu(chunk, chunk, (cType)0.001, splitRowSize * tiling.baseN);
 }
 
 /**
@@ -158,13 +143,11 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyRe
   * @retval None
   */
 template <typename aType, typename bType, typename cType, typename biasType>
-__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::CopyOut(AscendC::LocalTensor<cType> reluLocal,
-                                                                                   uint32_t tileIdx, uint32_t rowChunk)
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::CopyOut(uint32_t count)
 {
     const uint32_t roundM = tiling.singleCoreM / splitRowSize;
-    const uint32_t linearChunk = tileIdx * splitRowNums + rowChunk;
-    uint32_t startOffset = (linearChunk % roundM * splitRowSize * tiling.N + linearChunk / roundM * tiling.baseN);
-    auto chunk = reluLocal[rowChunk * splitRowSize * tiling.baseN];
+    uint32_t startOffset = (count % roundM * splitRowSize * tiling.N + count / roundM * tiling.baseN);
+    auto chunk = reluInLocal[(count % splitRowNums) * splitRowSize * tiling.baseN];
     AscendC::DataCopyParams copyParam = {(uint16_t)splitRowSize, (uint16_t)(tiling.baseN * sizeof(cType) / AscendC::DEFAULT_C0_SIZE), 0,
                                 (uint16_t)((tiling.N - tiling.baseN) * sizeof(cType) / AscendC::DEFAULT_C0_SIZE)};
     DataCopy(cGlobal[startOffset], chunk, copyParam);

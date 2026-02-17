@@ -1,0 +1,8 @@
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/ascendc_kernels_cpu.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/ascendc_kernels_bbit.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/edit_cache.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/rebuild_cache.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/list_install_components.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/install.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/install/local.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/build/CMakeFiles/install/strip.dir

@@ -1,0 +1,2 @@
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/out/lib/libascendc_kernels_cpu.so
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v2_algorithm/MatmulLeakyReluInvocationAsync/out/bin/ascendc_kernels_bbit
