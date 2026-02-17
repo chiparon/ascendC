@@ -162,121 +162,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ascendc_kernels_sim_interface
+# Target rules for targets named ascendc_kernels_cpu
 
 # Build rule for target.
-ascendc_kernels_sim_interface: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_interface
-.PHONY : ascendc_kernels_sim_interface
+ascendc_kernels_cpu: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_cpu
+.PHONY : ascendc_kernels_cpu
 
 # fast build rule for target.
-ascendc_kernels_sim_interface/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_interface.dir/build.make CMakeFiles/ascendc_kernels_sim_interface.dir/build
-.PHONY : ascendc_kernels_sim_interface/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_precompile
-
-# Build rule for target.
-ascendc_kernels_sim_precompile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_precompile
-.PHONY : ascendc_kernels_sim_precompile
-
-# fast build rule for target.
-ascendc_kernels_sim_precompile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_precompile.dir/build.make CMakeFiles/ascendc_kernels_sim_precompile.dir/build
-.PHONY : ascendc_kernels_sim_precompile/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_preprocess
-
-# Build rule for target.
-ascendc_kernels_sim_preprocess: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_preprocess
-.PHONY : ascendc_kernels_sim_preprocess
-
-# fast build rule for target.
-ascendc_kernels_sim_preprocess/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_preprocess.dir/build.make CMakeFiles/ascendc_kernels_sim_preprocess.dir/build
-.PHONY : ascendc_kernels_sim_preprocess/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_aic_device
-
-# Build rule for target.
-ascendc_kernels_sim_aic_device: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_aic_device
-.PHONY : ascendc_kernels_sim_aic_device
-
-# fast build rule for target.
-ascendc_kernels_sim_aic_device/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_aic_device.dir/build.make CMakeFiles/ascendc_kernels_sim_aic_device.dir/build
-.PHONY : ascendc_kernels_sim_aic_device/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_aiv_device
-
-# Build rule for target.
-ascendc_kernels_sim_aiv_device: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_aiv_device
-.PHONY : ascendc_kernels_sim_aiv_device
-
-# fast build rule for target.
-ascendc_kernels_sim_aiv_device/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_aiv_device.dir/build.make CMakeFiles/ascendc_kernels_sim_aiv_device.dir/build
-.PHONY : ascendc_kernels_sim_aiv_device/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_merge_obj
-
-# Build rule for target.
-ascendc_kernels_sim_merge_obj: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_merge_obj
-.PHONY : ascendc_kernels_sim_merge_obj
-
-# fast build rule for target.
-ascendc_kernels_sim_merge_obj/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_merge_obj.dir/build.make CMakeFiles/ascendc_kernels_sim_merge_obj.dir/build
-.PHONY : ascendc_kernels_sim_merge_obj/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_host
-
-# Build rule for target.
-ascendc_kernels_sim_host: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_host
-.PHONY : ascendc_kernels_sim_host
-
-# fast build rule for target.
-ascendc_kernels_sim_host/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_host.dir/build.make CMakeFiles/ascendc_kernels_sim_host.dir/build
-.PHONY : ascendc_kernels_sim_host/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim_host_stub_obj
-
-# Build rule for target.
-ascendc_kernels_sim_host_stub_obj: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim_host_stub_obj
-.PHONY : ascendc_kernels_sim_host_stub_obj
-
-# fast build rule for target.
-ascendc_kernels_sim_host_stub_obj/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/build.make CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/build
-.PHONY : ascendc_kernels_sim_host_stub_obj/fast
-
-#=============================================================================
-# Target rules for targets named ascendc_kernels_sim
-
-# Build rule for target.
-ascendc_kernels_sim: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ascendc_kernels_sim
-.PHONY : ascendc_kernels_sim
-
-# fast build rule for target.
-ascendc_kernels_sim/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim.dir/build.make CMakeFiles/ascendc_kernels_sim.dir/build
-.PHONY : ascendc_kernels_sim/fast
+ascendc_kernels_cpu/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_cpu.dir/build.make CMakeFiles/ascendc_kernels_cpu.dir/build
+.PHONY : ascendc_kernels_cpu/fast
 
 #=============================================================================
 # Target rules for targets named ascendc_kernels_bbit
@@ -290,54 +186,6 @@ ascendc_kernels_bbit: cmake_check_build_system
 ascendc_kernels_bbit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_bbit.dir/build.make CMakeFiles/ascendc_kernels_bbit.dir/build
 .PHONY : ascendc_kernels_bbit/fast
-
-ascendc_kernels_sim_stub.o: ascendc_kernels_sim_stub.cpp.o
-.PHONY : ascendc_kernels_sim_stub.o
-
-# target to build an object file
-ascendc_kernels_sim_stub.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_interface.dir/build.make CMakeFiles/ascendc_kernels_sim_interface.dir/ascendc_kernels_sim_stub.cpp.o
-.PHONY : ascendc_kernels_sim_stub.cpp.o
-
-ascendc_kernels_sim_stub.i: ascendc_kernels_sim_stub.cpp.i
-.PHONY : ascendc_kernels_sim_stub.i
-
-# target to preprocess a source file
-ascendc_kernels_sim_stub.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_interface.dir/build.make CMakeFiles/ascendc_kernels_sim_interface.dir/ascendc_kernels_sim_stub.cpp.i
-.PHONY : ascendc_kernels_sim_stub.cpp.i
-
-ascendc_kernels_sim_stub.s: ascendc_kernels_sim_stub.cpp.s
-.PHONY : ascendc_kernels_sim_stub.s
-
-# target to generate assembly for a file
-ascendc_kernels_sim_stub.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_interface.dir/build.make CMakeFiles/ascendc_kernels_sim_interface.dir/ascendc_kernels_sim_stub.cpp.s
-.PHONY : ascendc_kernels_sim_stub.cpp.s
-
-auto_gen/ascendc_kernels_sim/host_stub.o: auto_gen/ascendc_kernels_sim/host_stub.cpp.o
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.o
-
-# target to build an object file
-auto_gen/ascendc_kernels_sim/host_stub.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/build.make CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/auto_gen/ascendc_kernels_sim/host_stub.cpp.o
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.cpp.o
-
-auto_gen/ascendc_kernels_sim/host_stub.i: auto_gen/ascendc_kernels_sim/host_stub.cpp.i
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.i
-
-# target to preprocess a source file
-auto_gen/ascendc_kernels_sim/host_stub.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/build.make CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/auto_gen/ascendc_kernels_sim/host_stub.cpp.i
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.cpp.i
-
-auto_gen/ascendc_kernels_sim/host_stub.s: auto_gen/ascendc_kernels_sim/host_stub.cpp.s
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.s
-
-# target to generate assembly for a file
-auto_gen/ascendc_kernels_sim/host_stub.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/build.make CMakeFiles/ascendc_kernels_sim_host_stub_obj.dir/auto_gen/ascendc_kernels_sim/host_stub.cpp.s
-.PHONY : auto_gen/ascendc_kernels_sim/host_stub.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -362,6 +210,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_bbit.dir/build.make CMakeFiles/ascendc_kernels_bbit.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+matmul_leakyrelu_custom.o: matmul_leakyrelu_custom.cpp.o
+.PHONY : matmul_leakyrelu_custom.o
+
+# target to build an object file
+matmul_leakyrelu_custom.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_cpu.dir/build.make CMakeFiles/ascendc_kernels_cpu.dir/matmul_leakyrelu_custom.cpp.o
+.PHONY : matmul_leakyrelu_custom.cpp.o
+
+matmul_leakyrelu_custom.i: matmul_leakyrelu_custom.cpp.i
+.PHONY : matmul_leakyrelu_custom.i
+
+# target to preprocess a source file
+matmul_leakyrelu_custom.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_cpu.dir/build.make CMakeFiles/ascendc_kernels_cpu.dir/matmul_leakyrelu_custom.cpp.i
+.PHONY : matmul_leakyrelu_custom.cpp.i
+
+matmul_leakyrelu_custom.s: matmul_leakyrelu_custom.cpp.s
+.PHONY : matmul_leakyrelu_custom.s
+
+# target to generate assembly for a file
+matmul_leakyrelu_custom.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ascendc_kernels_cpu.dir/build.make CMakeFiles/ascendc_kernels_cpu.dir/matmul_leakyrelu_custom.cpp.s
+.PHONY : matmul_leakyrelu_custom.cpp.s
 
 matmul_leakyrelu_custom_tiling.o: matmul_leakyrelu_custom_tiling.cpp.o
 .PHONY : matmul_leakyrelu_custom_tiling.o
@@ -399,25 +271,14 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... ascendc_kernels_sim_aic_device"
-	@echo "... ascendc_kernels_sim_aiv_device"
-	@echo "... ascendc_kernels_sim_host"
-	@echo "... ascendc_kernels_sim_merge_obj"
-	@echo "... ascendc_kernels_sim_precompile"
-	@echo "... ascendc_kernels_sim_preprocess"
 	@echo "... ascendc_kernels_bbit"
-	@echo "... ascendc_kernels_sim"
-	@echo "... ascendc_kernels_sim_host_stub_obj"
-	@echo "... ascendc_kernels_sim_interface"
-	@echo "... ascendc_kernels_sim_stub.o"
-	@echo "... ascendc_kernels_sim_stub.i"
-	@echo "... ascendc_kernels_sim_stub.s"
-	@echo "... auto_gen/ascendc_kernels_sim/host_stub.o"
-	@echo "... auto_gen/ascendc_kernels_sim/host_stub.i"
-	@echo "... auto_gen/ascendc_kernels_sim/host_stub.s"
+	@echo "... ascendc_kernels_cpu"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... matmul_leakyrelu_custom.o"
+	@echo "... matmul_leakyrelu_custom.i"
+	@echo "... matmul_leakyrelu_custom.s"
 	@echo "... matmul_leakyrelu_custom_tiling.o"
 	@echo "... matmul_leakyrelu_custom_tiling.i"
 	@echo "... matmul_leakyrelu_custom_tiling.s"

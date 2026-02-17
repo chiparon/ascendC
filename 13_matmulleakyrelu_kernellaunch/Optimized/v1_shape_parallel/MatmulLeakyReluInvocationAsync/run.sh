@@ -20,8 +20,8 @@ SHORT=r:,v:,i:,b:,p:,d:,m:,n:,k:,t:,c:,B,R
 LONG=run-mode:,soc-version:,install-path:,build-type:,install-prefix:,build-dir:,m:,n:,k:,repeat:,force-core:,build-only,run-only,no-clean
 OPTS=$(getopt -a --options $SHORT --longoptions $LONG -- "$@")
 eval set -- "$OPTS"
-# Default to a valid 910B target so cpu/sim can run without explicitly passing -v.
-SOC_VERSION="${SOC_VERSION:-Ascend910B1}"
+# Default to 910B3 as the optimization target platform.
+SOC_VERSION="${SOC_VERSION:-Ascend910B3}"
 
 while :; do
     case "$1" in

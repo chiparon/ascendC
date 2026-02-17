@@ -108,7 +108,10 @@ ascendc_kernels_bbit_EXTERNAL_OBJECTS =
 ascendc_kernels_bbit: CMakeFiles/ascendc_kernels_bbit.dir/main.cpp.o
 ascendc_kernels_bbit: CMakeFiles/ascendc_kernels_bbit.dir/matmul_leakyrelu_custom_tiling.cpp.o
 ascendc_kernels_bbit: CMakeFiles/ascendc_kernels_bbit.dir/build.make
-ascendc_kernels_bbit: lib/libascendc_kernels_sim.so
+ascendc_kernels_bbit: libascendc_kernels_cpu.so
+ascendc_kernels_bbit: /home/viparon/Ascend/cann-8.5.0/toolkit/tools/tikicpulib/lib/libtikicpulib_cceprint.so
+ascendc_kernels_bbit: /home/viparon/Ascend/cann-8.5.0/toolkit/tools/tikicpulib/lib/libtikicpulib_npuchk.so
+ascendc_kernels_bbit: /home/viparon/Ascend/cann-8.5.0/toolkit/tools/tikicpulib/lib/libtikicpulib_stubreg.so
 ascendc_kernels_bbit: CMakeFiles/ascendc_kernels_bbit.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/13_matmulleakyrelu_kernellaunch/Optimized/v1_shape_parallel/MatmulLeakyReluInvocationAsync/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ascendc_kernels_bbit"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ascendc_kernels_bbit.dir/link.txt --verbose=$(VERBOSE)
