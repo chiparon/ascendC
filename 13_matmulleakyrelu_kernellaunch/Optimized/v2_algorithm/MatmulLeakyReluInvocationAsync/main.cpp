@@ -116,6 +116,10 @@ int32_t main(int32_t argc, char *argv[])
     const uint32_t blockDim = (tilingMeta->usedCoreNum + 1U) / 2U;
 #endif
 
+    std::printf("[INFO] tiling: M=%u N=%u K=%u key? usedCore=%u baseM=%u baseN=%u singleCoreM=%u singleCoreN=%u blockDim=%u\n",
+                tilingMeta->M, tilingMeta->N, tilingMeta->Ka, tilingMeta->usedCoreNum, tilingMeta->baseM, tilingMeta->baseN,
+                tilingMeta->singleCoreM, tilingMeta->singleCoreN, blockDim);
+
 #ifdef ASCENDC_CPU_DEBUG
     uint8_t *a = (uint8_t *)AscendC::GmAlloc(aFileSize);
     uint8_t *b = (uint8_t *)AscendC::GmAlloc(bFileSize);

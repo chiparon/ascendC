@@ -1,0 +1,3 @@
+[INFO]: Current compile soc version is Ascend910B3
+[INFO]: Shape M=1024, N=512, K=1024, repeat=5, force_core=2
+[INFO]: Build dir=/tmp/matmul_v2_ab_build, install dir=/tmp/matmul_v2_ab_out

@@ -42,7 +42,7 @@ public:
     __aicore__ inline void Process();
 
     __aicore__ inline void MatmulCompute();
-    __aicore__ inline void LeakyReluCompute(uint32_t chunkIdx);
+    __aicore__ inline void LeakyReluCompute(uint32_t count);
     __aicore__ inline void CopyOut(uint32_t count);
     __aicore__ inline void CalcOffset(int32_t blockIdx, const TCubeTiling &tiling, int32_t &offsetA, int32_t &offsetB,
                                       int32_t &offsetC, int32_t &offsetBias);
@@ -59,6 +59,7 @@ public:
     AscendC::LocalTensor<cType> reluInLocal;
     TCubeTiling tiling;
     AscendC::TQue<AscendC::TPosition::VECIN, 1> reluInQueue;
+    AscendC::TQue<AscendC::TPosition::VECOUT, 1> reluOutQueue;
     uint32_t splitRowNums = 0;
     uint32_t splitRowSize = 0;
 };
@@ -96,6 +97,7 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Init(GM
     biasGlobal = biasGlobal[offsetBias];
     workspaceGlobal = workspaceGlobal[GetBlockIdx() * tiling.singleCoreM * tiling.singleCoreN];
     pipe->InitBuffer(reluInQueue, 1, tiling.baseM * tiling.baseN * sizeof(cType)); // Init relu input queue.
+    pipe->InitBuffer(reluOutQueue, 1, splitRowSize * tiling.baseN * sizeof(cType)); // Init relu output queue.
 }
 
 /**
@@ -131,10 +133,11 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::MatmulC
 }
 
 template <typename aType, typename bType, typename cType, typename biasType>
-__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute(uint32_t chunkIdx)
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute(uint32_t count)
 {
-    auto chunk = reluInLocal[chunkIdx * splitRowSize * tiling.baseN];
-    LeakyRelu(chunk, chunk, (cType)0.001, splitRowSize * tiling.baseN);
+    auto reluOutLocal = reluOutQueue.AllocTensor<cType>();
+    LeakyRelu(reluOutLocal, reluInLocal[count * splitRowSize * tiling.baseN], (cType)0.001, splitRowSize * tiling.baseN);
+    reluOutQueue.EnQue(reluOutLocal);
 }
 
 /**
@@ -145,12 +148,14 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyRe
 template <typename aType, typename bType, typename cType, typename biasType>
 __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::CopyOut(uint32_t count)
 {
+    auto reluOutLocal = reluOutQueue.DeQue<cType>(); // wait relu compute result finish.
     const uint32_t roundM = tiling.singleCoreM / splitRowSize;
+    const uint32_t roundN = tiling.singleCoreN / tiling.baseN;
     uint32_t startOffset = (count % roundM * splitRowSize * tiling.N + count / roundM * tiling.baseN);
-    auto chunk = reluInLocal[(count % splitRowNums) * splitRowSize * tiling.baseN];
     AscendC::DataCopyParams copyParam = {(uint16_t)splitRowSize, (uint16_t)(tiling.baseN * sizeof(cType) / AscendC::DEFAULT_C0_SIZE), 0,
                                 (uint16_t)((tiling.N - tiling.baseN) * sizeof(cType) / AscendC::DEFAULT_C0_SIZE)};
-    DataCopy(cGlobal[startOffset], chunk, copyParam);
+    DataCopy(cGlobal[startOffset], reluOutLocal, copyParam);
+    reluOutQueue.FreeTensor(reluOutLocal);
 }
 
 /**
