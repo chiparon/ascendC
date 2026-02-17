@@ -1,5 +1,7 @@
 git config --global http.version HTTP/1.1
 git clone https://github.com/chiparon/ascendC.git
+
+cd ascendC/13_matmulleakyrelu_kernellaunch/Optimized/v2_MatmulLeakyReluInvocationAsync
 bash run.sh -r npu \
   -d /tmp/matmul_opt_npu_build \
   -p /tmp/matmul_opt_npu_out \

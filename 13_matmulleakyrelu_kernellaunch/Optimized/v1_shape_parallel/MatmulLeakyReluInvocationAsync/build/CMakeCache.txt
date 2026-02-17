@@ -225,7 +225,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 RUN_MODE:STRING=cpu
 
 //system on chip type
-SOC_VERSION:STRING=Ascend910B3
+SOC_VERSION:STRING=Ascend910B1
 
 //The directory containing a CMake configuration file for tikicpulib.
 tikicpulib_DIR:PATH=/home/viparon/Ascend/cann-8.5.0/toolkit/tools/tikicpulib/lib/cmake

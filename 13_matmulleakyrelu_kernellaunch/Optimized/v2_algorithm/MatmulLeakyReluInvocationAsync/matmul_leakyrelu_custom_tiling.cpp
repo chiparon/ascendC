@@ -98,9 +98,19 @@ bool TryGenerateOnce(const platform_ascendc::PlatformAscendC *platform, uint8_t 
   */
 bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint32_t N, uint32_t K, uint32_t preferredCoreNum)
 {
-    const uint32_t tilingKey = (M == 512U && N == 128U && K == 512U) ? 1U : 0U;
+    uint32_t tilingKey = 0U;
+    if (M == 512U && N == 128U && K == 512U) {
+        tilingKey = 1U;
+    } else if (M == 2048U && N == 2048U && K == 2048U) {
+        tilingKey = 2U; // S1
+    } else if (M == 4096U && N == 1024U && K == 4096U) {
+        tilingKey = 3U; // S2
+    } else if (M == 1024U && N == 512U && K == 1024U) {
+        tilingKey = 4U; // S3
+    }
+
     const int32_t baseM = (M >= 4096U) ? 128 : 256;
-    const int32_t baseN = (N >= 2048U) ? 256 : 128;
+    const int32_t baseN = (N >= 2048U || (N % 256U == 0U && N >= 1024U)) ? 256 : 128;
 
     auto ascendcPlatform = platform_ascendc::PlatformAscendCManager::GetInstance(socVersion);
     const uint32_t maxCoreNum = std::max<uint32_t>(1U, ascendcPlatform->GetCoreNumAiv());
@@ -122,6 +132,30 @@ bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint
             {128, 64},
             {baseM, baseN},
         };
+    } else if (tilingKey == 2U) {
+        splitCandidates = {
+            {128, 256},
+            {256, 256},
+            {256, 128},
+            {128, 128},
+            {64, 128},
+        };
+    } else if (tilingKey == 3U) {
+        splitCandidates = {
+            {128, 128},
+            {256, 128},
+            {128, 256},
+            {64, 128},
+            {128, 64},
+        };
+    } else if (tilingKey == 4U) {
+        splitCandidates = {
+            {256, 128},
+            {128, 128},
+            {128, 64},
+            {64, 128},
+            {baseM, baseN},
+        };
     }
 
     // Prefer multi-core plans. Single-core is kept as a last-resort fallback.
@@ -134,6 +168,9 @@ bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint
         uint32_t startCoreNum = std::min<uint32_t>(preferredCap, static_cast<uint32_t>(tileCount));
         if (startCoreNum >= 2U) {
             for (uint32_t core = startCoreNum; core >= 2U; --core) {
+                if (core > 2U && (core & 1U) != 0U) {
+                    continue; // Keep even core plan to match blockDim mapping on 910B.
+                }
                 if (TryGenerateOnce(ascendcPlatform, tilingBuf, M, N, K, core, split.baseM, split.baseN)) {
                     std::cout << "select tiling key=" << tilingKey << " core=" << core << " baseM=" << split.baseM
                               << " baseN=" << split.baseN << std::endl;
