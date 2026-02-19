@@ -1,0 +1,7 @@
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/execute_matmul_leakyrelu_op.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/edit_cache.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/rebuild_cache.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/list_install_components.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/install.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/install/local.dir
+/home/viparon/share/VMShare/AIal/envtrial/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation/build/CMakeFiles/install/strip.dir

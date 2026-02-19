@@ -1,0 +1,70 @@
+/**
+ * @file whole_reduce_sum_custom.cpp
+ *
+ * Copyright (C) 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+#include "whole_reduce_sum_custom_tiling.h"
+#include "register/op_def_registry.h"
+
+namespace optiling {
+const uint32_t BLOCK_DIM = 1;
+static ge::graphStatus TilingFunc(gert::TilingContext *context)
+{
+    TilingData tiling;
+    auto const shape = context->GetInputShape(0)->GetOriginShape();
+    uint32_t totalLength = context->GetInputShape(0)->GetOriginShape().GetShapeSize();
+    uint32_t rows = shape.GetDim(0);
+    uint32_t cols = shape.GetDim(1);
+    context->SetBlockDim(BLOCK_DIM);
+    tiling.set_totalLength(totalLength);
+    tiling.set_rows(rows);
+    tiling.set_cols(cols);
+    tiling.SaveToBuffer(context->GetRawTilingData()->GetData(), context->GetRawTilingData()->GetCapacity());
+    context->GetRawTilingData()->SetDataSize(tiling.GetDataSize());
+    size_t *currentWorkspace = context->GetWorkspaceSizes(1);
+    currentWorkspace[0] = 0;
+    return ge::GRAPH_SUCCESS;
+}
+} // namespace optiling
+
+namespace ge {
+static graphStatus InferShape(gert::InferShapeContext *context)
+{
+    const gert::Shape *x1_shape = context->GetInputShape(0);
+    return ge::GRAPH_SUCCESS;
+}
+
+static graphStatus InferDataType(gert::InferDataTypeContext *context)
+{
+    const auto inputDataType = context->GetInputDataType(0);
+    context->SetOutputDataType(0, inputDataType);
+    return ge::GRAPH_SUCCESS;
+}
+} // namespace ge
+
+namespace ops {
+class WholeReduceSumCustom : public OpDef {
+public:
+    explicit WholeReduceSumCustom(const char *name) : OpDef(name)
+    {
+        this->Input("x")
+            .ParamType(REQUIRED)
+            .DataType({ge::DT_FLOAT16})
+            .Format({ge::FORMAT_ND});
+        this->Output("y")
+            .ParamType(REQUIRED)
+            .DataType({ge::DT_FLOAT16})
+            .Format({ge::FORMAT_ND});
+
+        this->SetInferShape(ge::InferShape).SetInferDataType(ge::InferDataType);
+        this->AICore()
+            .SetTiling(optiling::TilingFunc)
+            .AddConfig("ascend910b");
+    }
+};
+OP_ADD(WholeReduceSumCustom);
+} // namespace ops
