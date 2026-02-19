@@ -337,8 +337,8 @@ bool OpRunner::RunOp()
     }
     INFO_LOG("Execute aclnnMatmulLeakyreluCustom success");
 
-    ret = aclrtSynchronizeStreamWithTimeout(stream, 5000);
-    if (ret != SUCCESS) {
+    ret = aclrtSynchronizeStream(stream);
+    if (ret != ACL_SUCCESS) {
         ERROR_LOG("Synchronize stream failed. error code is %d", static_cast<int32_t>(ret));
         (void)aclrtDestroyStream(stream);
         return false;

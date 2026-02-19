@@ -12,6 +12,7 @@
 #include <unistd.h>
 
 #include <cstdint>
+#include <cstdlib>
 #include <iostream>
 
 #include "acl/acl.h"
@@ -21,13 +22,34 @@
 bool g_isDevice = false;
 int deviceId = 0;
 
+namespace {
+
+int64_t GetEnvI64(const char *name, int64_t defaultValue)
+{
+    const char *value = std::getenv(name);
+    if (value == nullptr) {
+        return defaultValue;
+    }
+    char *end = nullptr;
+    long long parsed = std::strtoll(value, &end, 10);
+    if (end == value || *end != '\0' || parsed <= 0) {
+        return defaultValue;
+    }
+    return static_cast<int64_t>(parsed);
+}
+
+} // namespace
+
 OperatorDesc CreateOpDesc()
 {
-    // define operator
-    std::vector<int64_t> shapeA{1024, 256};
-    std::vector<int64_t> shapeB{256, 640};
-    std::vector<int64_t> shapeBias{640};
-    std::vector<int64_t> shapeC{1024, 640};
+    const int64_t m = GetEnvI64("MATMUL_M", 1024);
+    const int64_t n = GetEnvI64("MATMUL_N", 640);
+    const int64_t k = GetEnvI64("MATMUL_K", 256);
+
+    std::vector<int64_t> shapeA{m, k};
+    std::vector<int64_t> shapeB{k, n};
+    std::vector<int64_t> shapeBias{n};
+    std::vector<int64_t> shapeC{m, n};
     aclDataType dataTypeA = ACL_FLOAT16;
     aclDataType dataTypeB = ACL_FLOAT16;
     aclDataType dataTypeBias = ACL_FLOAT;
@@ -38,6 +60,8 @@ OperatorDesc CreateOpDesc()
     opDesc.AddInputTensorDesc(dataTypeB, shapeB.size(), shapeB.data(), format);
     opDesc.AddInputTensorDesc(dataTypeBias, shapeBias.size(), shapeBias.data(), format);
     opDesc.AddOutputTensorDesc(dataTypeC, shapeC.size(), shapeC.data(), format);
+
+    INFO_LOG("shape: M=%ld N=%ld K=%ld", m, n, k);
     return opDesc;
 }
 
@@ -102,8 +126,6 @@ bool InitResource()
     }
     INFO_LOG("Set device[%d] success", deviceId);
 
-    // runMode is ACL_HOST which represents app is running in host
-    // runMode is ACL_DEVICE which represents app is running in device
     aclrtRunMode runMode;
     if (aclrtGetRunMode(&runMode) != ACL_SUCCESS) {
         ERROR_LOG("Get run mode failed");
@@ -118,29 +140,24 @@ bool InitResource()
 
 bool RunOp()
 {
-    // create op desc
     OperatorDesc opDesc = CreateOpDesc();
 
-    // create Runner
     OpRunner opRunner(&opDesc);
     if (!opRunner.Init()) {
         ERROR_LOG("Init OpRunner failed");
         return false;
     }
 
-    // Load inputs
     if (!SetInputData(opRunner)) {
         ERROR_LOG("Set input data failed");
         return false;
     }
 
-    // Run op
     if (!opRunner.RunOp()) {
         ERROR_LOG("Run op failed");
         return false;
     }
 
-    // process output data
     if (!ProcessOutputData(opRunner)) {
         ERROR_LOG("Process output data failed");
         return false;
@@ -152,6 +169,9 @@ bool RunOp()
 
 int main(int argc, char **argv)
 {
+    (void)argc;
+    (void)argv;
+
     if (!InitResource()) {
         ERROR_LOG("Init resource failed");
         return FAILED;

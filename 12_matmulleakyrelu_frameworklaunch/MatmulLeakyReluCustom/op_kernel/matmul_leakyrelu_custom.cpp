@@ -21,11 +21,11 @@ template <typename aType, typename bType, typename cType, typename biasType> cla
 public:
     __aicore__ inline MatmulLeakyKernel(){};
     __aicore__ inline void Init(GM_ADDR a, GM_ADDR b, GM_ADDR bias, GM_ADDR c, GM_ADDR workspace,
-                                const TCubeTiling &tiling, float alpha, AscendC::TPipe *pipe);
-    template <bool setTmpSpace = false> __aicore__ inline void Process(AscendC::TPipe *pipe);
+                                const TCubeTiling &tiling, AscendC::TPipe *pipe);
+    __aicore__ inline void Process();
 
     __aicore__ inline void MatmulCompute();
-    __aicore__ inline void LeakyReluCompute();
+    __aicore__ inline void LeakyReluCompute(uint32_t count);
     __aicore__ inline void CopyOut(uint32_t count);
     __aicore__ inline void CalcOffset(int32_t blockIdx, const TCubeTiling &tiling, int32_t &offsetA, int32_t &offsetB,
                                       int32_t &offsetC, int32_t &offsetBias);
@@ -38,88 +38,62 @@ public:
     AscendC::GlobalTensor<bType> bGlobal;
     AscendC::GlobalTensor<cType> cGlobal;
     AscendC::GlobalTensor<biasType> biasGlobal;
-    AscendC::LocalTensor<cType> reluOutLocal;
-    float alpha;
+    AscendC::GlobalTensor<cType> workspaceGlobal;
+    AscendC::LocalTensor<cType> reluInLocal;
     TCubeTiling tiling;
-    AscendC::TQue<AscendC::TPosition::VECOUT, 1> reluOutQueue_;
-    int32_t mIdx = 0;
-    int32_t nIdx = 0;
+    AscendC::TQue<AscendC::TPosition::VECIN, 1> reluInQueue;
+    AscendC::TQue<AscendC::TPosition::VECOUT, 1> reluOutQueue;
+    uint32_t splitRowNums = 0;
+    uint32_t splitRowSize = 0;
 };
 
-/**
-  * @brief  Set matmulLeaky input and output gm addr of current core.
-  * @param  a: A matrix gm addr.
-  * @param  b: B matrix gm addr.
-  * @param  bias: Bias gm addr.
-  * @param  c: C matrix gm addr.
-  * @param  workspace: Temporary gm space addr required by matmul calc.
-  * @param  tiling: matmul tiling data.
-  * @param  alpha: leaky tiling data.
-  * @param  pipe: Global memory and sync management TPipe object.
-  * @retval None
-  */
 template <typename aType, typename bType, typename cType, typename biasType>
-__aicore__ inline void
-MatmulLeakyKernel<aType, bType, cType, biasType>::Init(GM_ADDR a, GM_ADDR b, GM_ADDR bias, GM_ADDR c, GM_ADDR workspace,
-                                                       const TCubeTiling &tiling, float alpha, AscendC::TPipe *pipe)
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Init(GM_ADDR a, GM_ADDR b, GM_ADDR bias,
+                                                                               GM_ADDR c, GM_ADDR workspace,
+                                                                               const TCubeTiling &tiling, AscendC::TPipe *pipe)
 {
     this->tiling = tiling;
-    this->alpha = alpha;
+    splitRowNums = 4;
+    splitRowSize = tiling.baseM / splitRowNums;
     aGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ aType *>(a), tiling.M * tiling.Ka);
     bGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ bType *>(b), tiling.Kb * tiling.N);
     cGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ cType *>(c), tiling.M * tiling.N);
     biasGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ biasType *>(bias), tiling.N);
+    workspaceGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ cType *>(workspace), tiling.M * tiling.N);
 
-    int offsetA = 0;
-    int offsetB = 0;
-    int offsetC = 0;
-    int offsetBias = 0;
-    CalcOffset(AscendC::GetBlockIdx(), tiling, offsetA, offsetB, offsetC, offsetBias); // Calculate the gm offset based on the blockidx.
+    int32_t offsetA = 0;
+    int32_t offsetB = 0;
+    int32_t offsetC = 0;
+    int32_t offsetBias = 0;
+    CalcOffset(AscendC::GetBlockIdx(), tiling, offsetA, offsetB, offsetC, offsetBias);
     aGlobal = aGlobal[offsetA];
     bGlobal = bGlobal[offsetB];
     cGlobal = cGlobal[offsetC];
     biasGlobal = biasGlobal[offsetBias];
-    pipe->InitBuffer(reluOutQueue_, 1, tiling.baseM * tiling.baseN * sizeof(cType)); // Init output buffer.
-    matmulObj.SetOrgShape(tiling.M, tiling.N, tiling.Ka, tiling.Kb);
-    if (GetSysWorkSpacePtr() == nullptr) {
-        return;
-    }
+    workspaceGlobal = workspaceGlobal[AscendC::GetBlockIdx() * tiling.singleCoreM * tiling.singleCoreN];
+    pipe->InitBuffer(reluInQueue, 1, tiling.baseM * tiling.baseN * sizeof(cType));
+    pipe->InitBuffer(reluOutQueue, 1, splitRowSize * tiling.baseN * sizeof(cType));
 }
 
-/**
-  * @brief  Main process of matmul calculation
-  * @param  pipe: Global memory and sync management TPipe object.
-  * @retval None
-  */
 template <typename aType, typename bType, typename cType, typename biasType>
-template <bool setTmpSpace>
-__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Process(AscendC::TPipe *pipe)
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Process()
 {
-    if (GetBlockIdx() >= tiling.usedCoreNum) {
+    if (AscendC::GetBlockIdx() >= tiling.usedCoreNum) {
         return;
     }
-    uint32_t computeRound = 0;
-    // Set temp UB space if the setTmpSpace is true.
-    if constexpr (setTmpSpace) {
-        AscendC::TBuf<> tmpMMFormatUb;
-        AscendC::LocalTensor<uint8_t> mmformatUb;
-        pipe->InitBuffer(tmpMMFormatUb, tiling.baseM * tiling.baseN * sizeof(cType));
-        mmformatUb = tmpMMFormatUb.Get<uint8_t>(tiling.baseM * tiling.baseN * sizeof(cType));
-        matmulObj.SetLocalWorkspace(mmformatUb);
-    }
-    auto tailM = tiling.M - mIdx * tiling.singleCoreM;
-    auto tailN = tiling.N - nIdx * tiling.singleCoreN;
-    auto mUse = tailM > tiling.singleCoreM ? tiling.singleCoreM : (tailM > 0 ? tailM : tiling.M);
-    auto nUse = tailN > tiling.singleCoreN ? tiling.singleCoreN : (tailN > 0 ? tailN : tiling.N);
-    matmulObj.SetTail(mUse, nUse, -1);
+    matmulObj.SetWorkspace(workspaceGlobal);
     matmulObj.SetTensorA(aGlobal);
     matmulObj.SetTensorB(bGlobal);
     matmulObj.SetBias(biasGlobal);
-    while (matmulObj.template Iterate<true>()) { // Once Iterate, compute baseM * baseN, sync is set true here.
-        MatmulCompute(); // Get matmul compute result.
-        LeakyReluCompute(); // Compute leakyRelu.
-        CopyOut(computeRound); // Copy leakyRelu out result to GM.
-        computeRound++;
+    matmulObj.template Iterate<false>();
+    for (int32_t i = 0; i < static_cast<int32_t>(tiling.singleCoreM * tiling.singleCoreN / (tiling.baseM * tiling.baseN)); ++i) {
+        MatmulCompute();
+        reluInLocal = reluInQueue.DeQue<cType>();
+        for (uint32_t j = 0; j < splitRowNums; ++j) {
+            LeakyReluCompute(j);
+            CopyOut(i * splitRowNums + j);
+        }
+        reluInQueue.FreeTensor(reluInLocal);
     }
     matmulObj.End();
 }
@@ -127,84 +101,57 @@ __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::Process
 template <typename aType, typename bType, typename cType, typename biasType>
 __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::MatmulCompute()
 {
-    reluOutLocal = reluOutQueue_.AllocTensor<cType>();
-    matmulObj.template GetTensorC<true>(reluOutLocal, false, true);
+    reluInLocal = reluInQueue.AllocTensor<cType>();
+    matmulObj.template GetTensorC<false>(reluInLocal, false, true);
+    reluInQueue.EnQue(reluInLocal);
 }
 
 template <typename aType, typename bType, typename cType, typename biasType>
-__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute()
+__aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::LeakyReluCompute(uint32_t count)
 {
-    LeakyRelu(reluOutLocal, reluOutLocal, (cType)alpha, tiling.baseM * tiling.baseN);
-    reluOutQueue_.EnQue(reluOutLocal);
+    auto reluOutLocal = reluOutQueue.AllocTensor<cType>();
+    LeakyRelu(reluOutLocal, reluInLocal[count * splitRowSize * tiling.baseN], (cType)0.001, splitRowSize * tiling.baseN);
+    reluOutQueue.EnQue(reluOutLocal);
 }
 
-/**
-  * @brief  Copy leakyRelu out result to GM.
-  * @param  count: Iterate count(once Iterate, compute baseM * baseN).
-  * @retval None
-  */
 template <typename aType, typename bType, typename cType, typename biasType>
 __aicore__ inline void MatmulLeakyKernel<aType, bType, cType, biasType>::CopyOut(uint32_t count)
 {
-    reluOutQueue_.DeQue<cType>();
-    const uint32_t roundM = Ceiling(tiling.singleCoreM, tiling.baseM);
-    const uint32_t curCopyM = tiling.singleCoreM < tiling.baseM ? tiling.singleCoreM : tiling.baseM;
-    const uint32_t curCopyN = tiling.singleCoreN < tiling.baseN ? tiling.singleCoreN : tiling.baseN;
-    const uint32_t curCopyNStride = tiling.N < tiling.baseN ? tiling.N : tiling.N - tiling.baseN;
-    uint32_t startOffset = (count % roundM * tiling.baseM * tiling.N + count / roundM * tiling.baseN);
-    DataCopyParams copyParam = {(uint16_t)curCopyM, (uint16_t)(curCopyN * sizeof(cType) / 32), 0,
-                                (uint16_t)(curCopyNStride * sizeof(cType) / 32)};
+    auto reluOutLocal = reluOutQueue.DeQue<cType>();
+    const uint32_t roundM = tiling.singleCoreM / splitRowSize;
+    uint32_t startOffset = (count % roundM * splitRowSize * tiling.N + count / roundM * tiling.baseN);
+    AscendC::DataCopyParams copyParam = {(uint16_t)splitRowSize,
+                                         (uint16_t)(tiling.baseN * sizeof(cType) / AscendC::DEFAULT_C0_SIZE),
+                                         0,
+                                         (uint16_t)((tiling.N - tiling.baseN) * sizeof(cType) / AscendC::DEFAULT_C0_SIZE)};
     DataCopy(cGlobal[startOffset], reluOutLocal, copyParam);
-    reluOutQueue_.FreeTensor(reluOutLocal);
+    reluOutQueue.FreeTensor(reluOutLocal);
 }
 
-/**
-  * @brief  Calculate the gm offset based on the blockidx.
-  * @param  blockIdx: Current Core blockidx.
-  * @param  tiling: Matmul tiling data.
-  * @param  offsetA: Gm offset of A matrix.
-  * @param  offsetB: Gm offset of B matrix.
-  * @param  offsetC: Gm offset of C matrix.
-  * @param  offsetBias: Gm offset of Bias matrix.
-  * @retval None
-  */
 template <typename aType, typename bType, typename cType, typename biasType>
 __aicore__ inline void
 MatmulLeakyKernel<aType, bType, cType, biasType>::CalcOffset(int32_t blockIdx, const TCubeTiling &tiling,
-                                                             int32_t &offsetA, int32_t &offsetB, int32_t &offsetC,
-                                                             int32_t &offsetBias)
+                                                              int32_t &offsetA, int32_t &offsetB, int32_t &offsetC,
+                                                              int32_t &offsetBias)
 {
     auto mSingleBlocks = Ceiling(tiling.M, tiling.singleCoreM);
-    mIdx = blockIdx % mSingleBlocks;
-    nIdx = blockIdx / mSingleBlocks;
+    auto mCoreIndx = blockIdx % mSingleBlocks;
+    auto nCoreIndx = blockIdx / mSingleBlocks;
 
-    offsetA = mIdx * tiling.Ka * tiling.singleCoreM;
-    offsetB = nIdx * tiling.singleCoreN;
-    offsetC = mIdx * tiling.N * tiling.singleCoreM + nIdx * tiling.singleCoreN;
-    offsetBias = nIdx * tiling.singleCoreN;
+    offsetA = mCoreIndx * tiling.Ka * tiling.singleCoreM;
+    offsetB = nCoreIndx * tiling.singleCoreN;
+    offsetC = mCoreIndx * tiling.N * tiling.singleCoreM + nCoreIndx * tiling.singleCoreN;
+    offsetBias = nCoreIndx * tiling.singleCoreN;
 }
 
-/**
-  * @brief  matmul_leakyrelu kernel function entry
-  * @param  a: A matrix gm addr.
-  * @param  b: B matrix gm addr.
-  * @param  bias: Bias gm addr.
-  * @param  c: Out gm addr.
-  * @param  workspace: Temporary gm space addr required by matmul calc.
-  * @param  tiling: Tiling data addr. 
-  * @retval None
-  */
 extern "C" __global__ __aicore__ void matmul_leakyrelu_custom(GM_ADDR a, GM_ADDR b, GM_ADDR bias, GM_ADDR c,
-                                                              GM_ADDR workspace, GM_ADDR tiling)
+                                                               GM_ADDR workspace, GM_ADDR tilingGm)
 {
-    GET_TILING_DATA(tilingData, tiling);
+    GET_TILING_DATA(tilingData, tilingGm);
+
     MatmulLeakyKernel<half, half, float, float> matmulLeakyKernel;
     AscendC::TPipe pipe;
-    REGIST_MATMUL_OBJ(&pipe, GetSysWorkSpacePtr(), matmulLeakyKernel.matmulObj, &tilingData.cubeTilingData); // Initialize the matmul object.
-    matmulLeakyKernel.Init(a, b, bias, c, workspace, tilingData.cubeTilingData, tilingData.alpha, &pipe);
-    if (TILING_KEY_IS(1)) {
-        matmulLeakyKernel.Process(&pipe);
-    } else if (TILING_KEY_IS(2)) {
-        matmulLeakyKernel.Process<true>(&pipe);
-    }
+    REGIST_MATMUL_OBJ(&pipe, GetSysWorkSpacePtr(), matmulLeakyKernel.matmulObj, &tilingData.cubeTilingData);
+    matmulLeakyKernel.Init(a, b, bias, c, workspace, tilingData.cubeTilingData, &pipe);
+    matmulLeakyKernel.Process();
 }
