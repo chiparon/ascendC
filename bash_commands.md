@@ -8,26 +8,32 @@ bash run.sh -r npu \
   --build-only
 
 
+  bash run.sh -r npu -v Ascend910B3 \
+    -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
+    --m 4096 --n 1024 --k 4096 --repeat 10 --force-core 4 --run-only \
+    --kernel-msprof --msprof-repeat 3 --msprof-output /tmp/msprof_s2_core4
+
 #s1234
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 2048 --n 2048 --k 2048 --repeat 10 --force-core 2 --run-only
+  --m 2048 --n 2048 --k 2048 --repeat 10 --force-core 2 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s1_core2
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 2048 --n 2048 --k 2048 --repeat 10 --force-core 0 --run-only
+  --m 2048 --n 2048 --k 2048 --repeat 10 --force-core 0 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s1_core4
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 4096 --n 1024 --k 4096 --repeat 10 --force-core 2 --run-only
+  --m 4096 --n 1024 --k 4096 --repeat 10 --force-core 2 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s2_core2
+
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 4096 --n 1024 --k 4096 --repeat 10 --force-core 0 --run-only
+  --m 4096 --n 1024 --k 4096 --repeat 10 --force-core 0 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s2_core4
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 1024 --n 512 --k 1024 --repeat 10 --force-core 2 --run-only
+  --m 1024 --n 512 --k 1024 --repeat 10 --force-core 2 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s3_core2
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 1024 --n 512 --k 1024 --repeat 10 --force-core 0 --run-only
+  --m 1024 --n 512 --k 1024 --repeat 10 --force-core 0 --run-only --kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s3_core4
   
 bash run.sh -r npu -v Ascend910B3 -d /tmp/matmul_opt_npu_build -p /tmp/matmul_opt_npu_out \
-  --m 512 --n 128 --k 512 --repeat 10 --force-core 0 --run-only
-echo ASCEND_HOME_PATH
+  --m 512 --n 128 --k 512 --repeat 10 --force-core 0 --run-only--kernel-msprof --msprof-repeat 3 --msprof-output ./tmp/msprof_s4
+  echo ASCEND_HOME_PATH
 

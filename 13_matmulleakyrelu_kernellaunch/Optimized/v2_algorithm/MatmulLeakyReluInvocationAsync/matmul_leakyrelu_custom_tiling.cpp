@@ -9,6 +9,7 @@
  */
 #include <algorithm>
 #include <cassert>
+#include <cstdlib>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
@@ -34,6 +35,20 @@ struct SplitConfig {
     int32_t baseM;
     int32_t baseN;
 };
+
+uint32_t GetEnvU32(const char *name, uint32_t defaultValue)
+{
+    const char *value = std::getenv(name);
+    if (value == nullptr) {
+        return defaultValue;
+    }
+    char *end = nullptr;
+    unsigned long parsed = std::strtoul(value, &end, 10);
+    if (end == value || *end != '\0') {
+        return defaultValue;
+    }
+    return static_cast<uint32_t>(parsed);
+}
 
 bool TryGenerateOnce(const platform_ascendc::PlatformAscendC *platform, uint8_t *tilingBuf, uint32_t M, uint32_t N, uint32_t K,
                      uint32_t usedCoreNum, int32_t baseM, int32_t baseN)
@@ -111,6 +126,8 @@ bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint
 
     const int32_t baseM = (M >= 4096U) ? 128 : 256;
     const int32_t baseN = (N >= 2048U || (N % 256U == 0U && N >= 1024U)) ? 256 : 128;
+    const uint32_t forceBaseM = GetEnvU32("MATMUL_FORCE_BASE_M", 0U);
+    const uint32_t forceBaseN = GetEnvU32("MATMUL_FORCE_BASE_N", 0U);
 
     auto ascendcPlatform = platform_ascendc::PlatformAscendCManager::GetInstance(socVersion);
     const uint32_t maxCoreNum = std::max<uint32_t>(1U, ascendcPlatform->GetCoreNumAiv());
@@ -157,6 +174,27 @@ bool GenerateTiling(const char *socVersion, uint8_t *tilingBuf, uint32_t M, uint
             {baseM, baseN},
         };
     }
+
+    if (forceBaseM > 0U && forceBaseN > 0U) {
+        splitCandidates.insert(splitCandidates.begin(), {static_cast<int32_t>(forceBaseM), static_cast<int32_t>(forceBaseN)});
+    }
+
+    // Deduplicate candidate list while preserving order to keep tuning logs deterministic.
+    std::vector<SplitConfig> uniqCandidates;
+    uniqCandidates.reserve(splitCandidates.size());
+    for (const auto &c : splitCandidates) {
+        bool seen = false;
+        for (const auto &u : uniqCandidates) {
+            if (u.baseM == c.baseM && u.baseN == c.baseN) {
+                seen = true;
+                break;
+            }
+        }
+        if (!seen) {
+            uniqCandidates.push_back(c);
+        }
+    }
+    splitCandidates.swap(uniqCandidates);
 
     // Prefer multi-core plans. Single-core is kept as a last-resort fallback.
     for (const auto &split : splitCandidates) {

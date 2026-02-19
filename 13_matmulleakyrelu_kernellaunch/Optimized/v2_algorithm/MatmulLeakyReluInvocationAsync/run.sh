@@ -12,6 +12,8 @@ MATMUL_N=640
 MATMUL_K=256
 REPEAT=1
 FORCE_CORE=0
+FORCE_BASE_M=0
+FORCE_BASE_N=0
 BUILD_ONLY=0
 RUN_ONLY=0
 CLEAN_BUILD=1
@@ -19,8 +21,8 @@ KERNEL_MSPROF=0
 MSPROF_REPEAT=1
 MSPROF_OUTPUT_DIR=""
 
-SHORT=r:,v:,i:,b:,p:,d:,m:,n:,k:,t:,c:,Q:,O:,B,R,P
-LONG=run-mode:,soc-version:,install-path:,build-type:,install-prefix:,build-dir:,m:,n:,k:,repeat:,force-core:,msprof-repeat:,msprof-output:,build-only,run-only,kernel-msprof,no-clean
+SHORT=r:,v:,i:,b:,p:,d:,m:,n:,k:,t:,c:,M:,N:,Q:,O:,B,R,P
+LONG=run-mode:,soc-version:,install-path:,build-type:,install-prefix:,build-dir:,m:,n:,k:,repeat:,force-core:,force-base-m:,force-base-n:,msprof-repeat:,msprof-output:,build-only,run-only,kernel-msprof,no-clean
 OPTS=$(getopt -a --options $SHORT --longoptions $LONG -- "$@")
 eval set -- "$OPTS"
 # Default to 910B3 as the optimization target platform.
@@ -70,6 +72,14 @@ while :; do
         ;;
     -c | --force-core)
         FORCE_CORE="$2"
+        shift 2
+        ;;
+    -M | --force-base-m)
+        FORCE_BASE_M="$2"
+        shift 2
+        ;;
+    -N | --force-base-n)
+        FORCE_BASE_N="$2"
         shift 2
         ;;
     -Q | --msprof-repeat)
@@ -145,9 +155,12 @@ export ASCEND_TOOLKIT_HOME=${_ASCEND_INSTALL_PATH}
 export ASCEND_HOME_PATH=${_ASCEND_INSTALL_PATH}
 export MATMUL_M MATMUL_N MATMUL_K
 export MATMUL_FORCE_CORE_NUM=${FORCE_CORE}
+export MATMUL_FORCE_BASE_M=${FORCE_BASE_M}
+export MATMUL_FORCE_BASE_N=${FORCE_BASE_N}
 export REPEAT
 echo "[INFO]: Current compile soc version is ${SOC_VERSION}"
 echo "[INFO]: Shape M=${MATMUL_M}, N=${MATMUL_N}, K=${MATMUL_K}, repeat=${REPEAT}, force_core=${FORCE_CORE}"
+echo "[INFO]: force_base_m=${FORCE_BASE_M}, force_base_n=${FORCE_BASE_N}"
 echo "[INFO]: Build dir=${BUILD_DIR}, install dir=${INSTALL_PREFIX}"
 if [[ "${KERNEL_MSPROF}" -eq 1 ]]; then
     echo "[INFO]: Kernel msprof enabled, msprof_repeat=${MSPROF_REPEAT}, msprof_output=${MSPROF_OUTPUT_DIR:-auto}"
