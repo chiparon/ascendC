@@ -14,9 +14,6 @@ BUILD_DIR="${BUILD_DIR:-build}"
 DO_BUILD="${DO_BUILD:-1}"
 REPEAT="${REPEAT:-1}"
 MSPROF_REPEAT="${MSPROF_REPEAT:-1}"
-FORCE_CORE_LIST="${FORCE_CORE_LIST:-2 4}"
-BASE_M_LIST="${BASE_M_LIST:-128 256}"
-BASE_N_LIST="${BASE_N_LIST:-128 256}"
 KERNEL_PATTERN="${KERNEL_PATTERN:-matmul|leaky|custom}"
 
 TS="$(date +%Y%m%d_%H%M%S)"
@@ -30,7 +27,7 @@ cd "${PROJECT_DIR}"
 echo "shape,force_core,base_m,base_n,repeat,msprof_repeat,avg_ms,p50_ms,p90_ms,kernel_avg_ms,kernel_p50_ms,kernel_p90_ms,kernel_samples,kernel_source,error_ratio,pass,msprof_dir,log_file" > "${SUMMARY_CSV}"
 cat > "${SUMMARY_MD}" << 'MD'
 | Shape | core | baseM | baseN | repeat | msprof_repeat | AVG(ms) | P50(ms) | P90(ms) | kernel AVG(ms) | kernel P50(ms) | kernel P90(ms) | kernel samples | error ratio | pass/fail | msprof dir | log |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|---|
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|---|
 MD
 
 if [[ "${DO_BUILD}" == "1" ]]; then
@@ -42,17 +39,13 @@ run_case() {
     local m="$2"
     local n="$3"
     local k="$4"
-    local core="$5"
-    local bm="$6"
-    local bn="$7"
 
     local tag
-    tag="$(echo "${shape}_c${core}_m${bm}_n${bn}" | tr '(), ' '____')"
+    tag="$(echo "${shape}" | tr '(), ' '____')"
     local log_file="${LOG_DIR}/${tag}.log"
     local msprof_dir="${LOG_DIR}/msprof_${tag}"
 
-    MATMUL_FORCE_CORE_NUM="${core}" MATMUL_FORCE_BASE_M="${bm}" MATMUL_FORCE_BASE_N="${bn}" \
-        bash run.sh -d "${BUILD_DIR}" -R \
+    bash run.sh -d "${BUILD_DIR}" -R \
         -m "${m}" -n "${n}" -k "${k}" -t "${REPEAT}" \
         -P -Q "${MSPROF_REPEAT}" -O "${msprof_dir}" | tee "${log_file}"
 
@@ -81,70 +74,16 @@ run_case() {
     else
         passed="fail"
     fi
+
     local csv_shape="${shape//\"/\"\"}"
-    echo "\"${csv_shape}\",${core},${bm},${bn},${REPEAT},${MSPROF_REPEAT},${avg:-NA},${p50:-NA},${p90:-NA},${kernel_avg:-NA},${kernel_p50:-NA},${kernel_p90:-NA},${kernel_samples:-0},\"${kernel_source}\",${error_ratio:-NA},${passed},${msprof_dir},${log_file}" >> "${SUMMARY_CSV}"
-    echo "| ${shape} | ${core} | ${bm} | ${bn} | ${REPEAT} | ${MSPROF_REPEAT} | ${avg:-NA} | ${p50:-NA} | ${p90:-NA} | ${kernel_avg:-NA} | ${kernel_p50:-NA} | ${kernel_p90:-NA} | ${kernel_samples:-0} | ${error_ratio:-NA} | ${passed} | ${msprof_dir} | ${log_file} |" >> "${SUMMARY_MD}"
+    echo "\"${csv_shape}\",baseline,baseline,baseline,${REPEAT},${MSPROF_REPEAT},${avg:-NA},${p50:-NA},${p90:-NA},${kernel_avg:-NA},${kernel_p50:-NA},${kernel_p90:-NA},${kernel_samples:-0},\"${kernel_source}\",${error_ratio:-NA},${passed},${msprof_dir},${log_file}" >> "${SUMMARY_CSV}"
+    echo "| ${shape} | baseline | baseline | baseline | ${REPEAT} | ${MSPROF_REPEAT} | ${avg:-NA} | ${p50:-NA} | ${p90:-NA} | ${kernel_avg:-NA} | ${kernel_p50:-NA} | ${kernel_p90:-NA} | ${kernel_samples:-0} | ${error_ratio:-NA} | ${passed} | ${msprof_dir} | ${log_file} |" >> "${SUMMARY_MD}"
 }
 
-for core in ${FORCE_CORE_LIST}; do
-    for bm in ${BASE_M_LIST}; do
-        for bn in ${BASE_N_LIST}; do
-            run_case "S2(4096,1024,4096)" 4096 1024 4096 "${core}" "${bm}" "${bn}"
-            run_case "S1(2048,2048,2048)" 2048 2048 2048 "${core}" "${bm}" "${bn}"
-            run_case "S3(1024,512,1024)" 1024 512 1024 "${core}" "${bm}" "${bn}"
-        done
-    done
-done
-
-python3 - "${SUMMARY_CSV}" "${LOG_DIR}" << 'PY'
-import csv
-import math
-import sys
-from pathlib import Path
-
-
-def to_float(text: str) -> float:
-    try:
-        return float(text)
-    except (TypeError, ValueError):
-        return math.inf
-
-
-summary_csv = Path(sys.argv[1])
-log_dir = Path(sys.argv[2])
-rows = []
-with summary_csv.open("r", encoding="utf-8", newline="") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        if row.get("pass") != "pass":
-            continue
-        rows.append(row)
-
-shape_rows = {}
-for row in rows:
-    shape = row.get("shape", "unknown")
-    shape_rows.setdefault(shape, []).append(row)
-
-rank_md = log_dir / "rank_by_shape.md"
-with rank_md.open("w", encoding="utf-8") as out:
-    out.write("# rank by shape (pass only)\n\n")
-    if not shape_rows:
-        out.write("no pass cases found.\n")
-    else:
-        for shape, items in shape_rows.items():
-            out.write(f"## {shape}\n\n")
-            by_kernel = sorted(items, key=lambda r: to_float(r.get("kernel_avg_ms", "NA")))
-            out.write("| rank(kernel) | core | baseM | baseN | kernel_avg_ms | avg_ms |\n")
-            out.write("|---:|---:|---:|---:|---:|---:|\n")
-            for idx, row in enumerate(by_kernel, 1):
-                out.write(
-                    f"| {idx} | {row.get('force_core','')} | {row.get('base_m','')} | {row.get('base_n','')} | "
-                    f"{row.get('kernel_avg_ms','NA')} | {row.get('avg_ms','NA')} |\n"
-                )
-            out.write("\n")
-PY
+run_case "S2(4096,1024,4096)" 4096 1024 4096
+run_case "S1(2048,2048,2048)" 2048 2048 2048
+run_case "S3(1024,512,1024)" 1024 512 1024
 
 echo "[INFO] done"
 echo "[INFO] summary csv: ${SUMMARY_CSV}"
 echo "[INFO] summary md : ${SUMMARY_MD}"
-echo "[INFO] rank by shape: ${LOG_DIR}/rank_by_shape.md"

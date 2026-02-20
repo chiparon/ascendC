@@ -10,6 +10,8 @@
 │   ├── scripts
 │   │   ├── verify_result.py    // 真值对比文件
 │   │   └── gen_data.py         // 输入数据和真值数据生成脚本文件
+│   │   ├── run_kernel_tune.sh  // baseline 批量采样脚本（端到端+kernel统计）
+│   │   └── extract_msprof_kernel_ms.py // msprof kernel 时长汇总脚本
 │   ├── src
 │   │   ├── CMakeLists.txt     // 编译规则文件
 │   │   ├── common.cpp         // 公共方法类的实现，用于读取二进制文件
@@ -43,12 +45,24 @@ aclnnStatus aclnnMatmulLeakyReluCustom(void *workspace, uint64_t workspaceSize, 
     cd ${git_clone_path}/samples/operator/ascendc/0_introduction/12_matmulleakyrelu_frameworklaunch/AclNNInvocation
     ```
 
-  - 样例执行
+	  - 样例执行
 
-    样例执行过程中会自动生成测试数据，然后编译与运行aclnn样例，最后检验运行结果。具体过程可参见run.sh脚本。
-    ```bash
-    bash run.sh
-    ```
+	    样例执行过程中会自动生成测试数据，然后编译与运行aclnn样例，最后检验运行结果。具体过程可参见run.sh脚本。
+	    ```bash
+	    bash run.sh
+	    ```
+
+### 3. 高维shape与性能采样（baseline口径）
+```bash
+# 单次运行（支持动态 shape）
+bash run.sh -m 2048 -n 2048 -k 2048 -t 5
+
+# 启用 kernel msprof
+bash run.sh -m 2048 -n 2048 -k 2048 -t 1 -P -Q 3 -O ./msprof_s1
+
+# 批量采样（S2/S1/S3）
+bash scripts/run_kernel_tune.sh
+```
 
 ## 更新说明
 | 时间       | 更新事项     |
